@@ -8,10 +8,15 @@ export default function AboutContactPage({ currentPage }) {
 
   useEffect(() => {
     if (currentPage === 'contact') {
-      const contactEl = document.getElementById('contact');
-      if (contactEl) {
-        contactEl.scrollIntoView({ behavior: 'smooth' });
-      }
+      const timer = setTimeout(() => {
+        const contactEl = document.getElementById('contact');
+        if (contactEl) {
+          contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    } else if (currentPage === 'about') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [currentPage]);
 
@@ -158,7 +163,7 @@ export default function AboutContactPage({ currentPage }) {
       </section>
 
       {/* CONTACT SECTION - 2 COLUMNS */}
-      <section id="contact" className="section-padding" style={{ backgroundColor: 'var(--bg-warm-beige)' }}>
+      <section id="contact" className="section-padding" style={{ backgroundColor: 'var(--bg-warm-beige)', scrollMarginTop: '80px' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto 3.5rem auto' }}>
             <span style={{ fontSize: '0.75rem', letterSpacing: '0.2em', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase' }}>

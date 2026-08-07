@@ -27,9 +27,9 @@ export default function Header({ currentPage, setCurrentPage }) {
       setTimeout(() => {
         const contactEl = document.getElementById('contact');
         if (contactEl) {
-          contactEl.scrollIntoView({ behavior: 'smooth' });
+          contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 50);
+      }, 100);
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
