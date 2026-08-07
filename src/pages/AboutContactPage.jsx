@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Phone, MessageCircle, Navigation, MapPin, Sparkles, Clock, CheckCircle2 } from 'lucide-react';
 
-export default function AboutContactPage() {
+export default function AboutContactPage({ currentPage }) {
   const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.489115715206!2d72.8552!3d19.1764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b71891b0f51d%3A0x6b8f36c56b797b10!2sRani%20Sati%20Marg%2C%20Malad%20East%2C%20Mumbai%2C%20Maharashtra%20400097!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin";
   const directMapUrl = "https://www.google.com/maps/search/?api=1&query=Jalaram+Store+Valmik+Sadan+Near+Navjeevan+High+School+Rani+Sati+Marg+Malad+East+Mumbai+400097";
   const whatsappUrl = "https://wa.me/919619113993?text=Hi%20The%20Perfume%20Corner,%20I%20would%20like%20to%20visit%20your%20store%20in%20Malad%20East.";
+
+  useEffect(() => {
+    if (currentPage === 'contact') {
+      const contactEl = document.getElementById('contact');
+      if (contactEl) {
+        contactEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [currentPage]);
 
   return (
     <div className="animate-fade-in" style={{ backgroundColor: 'var(--bg-warm-beige)' }}>
@@ -149,7 +158,7 @@ export default function AboutContactPage() {
       </section>
 
       {/* CONTACT SECTION - 2 COLUMNS */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-warm-beige)' }}>
+      <section id="contact" className="section-padding" style={{ backgroundColor: 'var(--bg-warm-beige)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto 3.5rem auto' }}>
             <span style={{ fontSize: '0.75rem', letterSpacing: '0.2em', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase' }}>

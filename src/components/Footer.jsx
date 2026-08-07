@@ -75,7 +75,7 @@ export default function Footer({ setCurrentPage }) {
               </li>
               <li>
                 <button
-                  onClick={() => { setCurrentPage('about-contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  onClick={() => { setCurrentPage('about'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                   style={{ color: 'rgba(255, 249, 240, 0.8)', transition: 'var(--transition-fast)' }}
                 >
                   About Our Heritage
@@ -83,7 +83,15 @@ export default function Footer({ setCurrentPage }) {
               </li>
               <li>
                 <button
-                  onClick={() => { setCurrentPage('about-contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  onClick={() => {
+                    setCurrentPage('contact');
+                    setTimeout(() => {
+                      const contactEl = document.getElementById('contact');
+                      if (contactEl) {
+                        contactEl.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }, 50);
+                  }}
                   style={{ color: 'rgba(255, 249, 240, 0.8)', transition: 'var(--transition-fast)' }}
                 >
                   Store Location & Contact

@@ -40,7 +40,7 @@ export default function App() {
         )}
 
         {(currentPage === 'about' || currentPage === 'contact' || currentPage === 'about-contact') && (
-          <AboutContactPage />
+          <AboutContactPage currentPage={currentPage} />
         )}
       </main>
 
