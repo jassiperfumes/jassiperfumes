@@ -1,0 +1,243 @@
+/* Custom Design System for The Perfume Corner */
+:root {
+  --bg-warm-beige: #F4EBDD;
+  --bg-cream: #FFF9F0;
+  --text-espresso: #2B211B;
+  --text-espresso-muted: #5C4B40;
+  --accent-gold: #B58A45;
+  --accent-gold-light: #D9AF69;
+  --accent-gold-border: rgba(181, 138, 69, 0.3);
+  --accent-dark-brown: #4A3426;
+  --accent-dark-brown-hover: #362419;
+  --accent-olive: #6F7052;
+  
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  --shadow-subtle: 0 4px 20px rgba(43, 33, 27, 0.05);
+  --shadow-medium: 0 10px 30px rgba(43, 33, 27, 0.08);
+  --shadow-gold: 0 8px 25px rgba(181, 138, 69, 0.15);
+  
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease-out;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-warm-beige);
+  color: var(--text-espresso);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--text-espresso);
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-sans);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes goldPulse {
+  0%, 100% { border-color: rgba(181, 138, 69, 0.3); }
+  50% { border-color: rgba(181, 138, 69, 0.8); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+/* Glassmorphism & Gold Details */
+.glass-panel {
+  background: rgba(255, 249, 240, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--accent-gold-border);
+}
+
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-gold) 50%, transparent 100%);
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.gold-badge {
+  display: inline-block;
+  padding: 0.25rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold-border);
+  border-radius: 50px;
+  background: rgba(255, 249, 240, 0.6);
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: var(--accent-dark-brown);
+  color: #FFF9F0;
+  padding: 0.9rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-gold);
+  color: var(--text-espresso);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: transparent;
+  color: var(--text-espresso);
+  padding: 0.9rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--text-espresso);
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  background-color: var(--text-espresso);
+  color: var(--bg-cream);
+  border-color: var(--text-espresso);
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: var(--accent-gold);
+  color: var(--text-espresso);
+  padding: 0.9rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+}
+
+.btn-gold:hover {
+  background-color: var(--accent-dark-brown);
+  color: #FFF9F0;
+  transform: translateY(-2px);
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-padding {
+  padding: 5rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 3.5rem 0;
+  }
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(43, 33, 27, 0.7);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background: var(--bg-cream);
+  border: 1px solid var(--accent-gold-border);
+  border-radius: 6px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--shadow-medium);
+}
+
+/* Sticky Mobile Bottom Bar Padding offset */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 70px;
+  }
+}
