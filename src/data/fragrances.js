@@ -47,7 +47,7 @@ export const FRAGRANCES = [
     type: "INSPIRED FRAGRANCES",
     notes: "Bourbon Vanilla, Cardamom & Amber",
     description: "A bold, magnetic fragrance profile featuring rich gourmand vanilla balanced by vibrant spice.",
-    image: "/assets/perfumes/perfume_5.png",
+    image: "/assets/perfumes/perfume_5.jpg",
     isFeatured: true
   },
   {
