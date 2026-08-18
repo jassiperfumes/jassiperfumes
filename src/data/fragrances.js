@@ -57,7 +57,7 @@ export const FRAGRANCES = [
     type: "INSPIRED FRAGRANCES",
     notes: "Pracaxi Wood, Black Amber & Lemon",
     description: "An edgy, rebellious scent profile blending sweet spicy accords with heavy dark woods.",
-    image: "/assets/perfumes/perfume_6.png",
+    image: "/assets/perfumes/perfume_6.jpg",
     isFeatured: true
   },
   {
