@@ -27,7 +27,7 @@ export const FRAGRANCES = [
     type: "INSPIRED FRAGRANCES",
     notes: "Aquatic Mineral & Sicilian Mandarin",
     description: "A refreshing marine fragrance profile capturing the essence of ocean breezes and sun-warmed citrus.",
-    image: "/assets/perfumes/perfume_3.png",
+    image: "/assets/perfumes/perfume_3.jpg",
     isFeatured: true
   },
   {
