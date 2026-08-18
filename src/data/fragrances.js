@@ -77,7 +77,7 @@ export const FRAGRANCES = [
     type: "INSPIRED FRAGRANCES",
     notes: "Crisp Apple, Cinnamon & Sandalwood",
     description: "An iconic, elegant fragrance profile combining warm fruitiness with refined wooden warmth.",
-    image: "/assets/perfumes/perfume_8.png",
+    image: "/assets/perfumes/perfume_8.jpg",
     isFeatured: true
   },
   {
