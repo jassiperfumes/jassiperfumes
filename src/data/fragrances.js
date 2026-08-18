@@ -37,7 +37,7 @@ export const FRAGRANCES = [
     type: "INSPIRED FRAGRANCES",
     notes: "Leather, Tonka Bean & Guaiac Wood",
     description: "A sophisticated oriental leather scent profile tailored for formal evening signature wear.",
-    image: "/assets/perfumes/perfume_4.png",
+    image: "/assets/perfumes/perfume_4.jpg",
     isFeatured: true
   },
   {
