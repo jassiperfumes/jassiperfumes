@@ -60,7 +60,7 @@ export default function CataloguePage({ onSelectFragrance }) {
             FRAGRANCE COLLECTION
           </h1>
           <p style={{ fontSize: '1.05rem', color: 'rgba(255, 249, 240, 0.85)', lineHeight: 1.6 }}>
-            Explore 60 fragrance profiles available at The Perfume Corner.
+            Explore {FRAGRANCES.length} fragrance profiles available at The Perfume Corner.
           </p>
         </div>
       </section>

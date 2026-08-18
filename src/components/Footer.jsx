@@ -1,4 +1,5 @@
 import React from 'react';
+import { FRAGRANCES } from '../data/fragrances';
 import { Phone, MapPin, MessageCircle, Heart, Sparkles } from 'lucide-react';
 
 export default function Footer({ setCurrentPage }) {
@@ -70,7 +71,7 @@ export default function Footer({ setCurrentPage }) {
                   onClick={() => { setCurrentPage('catalogue'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                   style={{ color: 'rgba(255, 249, 240, 0.8)', transition: 'var(--transition-fast)' }}
                 >
-                  Fragrance Catalogue (60 Scents)
+                  Fragrance Catalogue ({FRAGRANCES.length} Scents)
                 </button>
               </li>
               <li>

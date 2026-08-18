@@ -1,4 +1,4 @@
-// Complete dataset of 60 fragrance profiles available at The Perfume Corner
+// Complete dataset of 81 fragrance profiles available at The Perfume Corner
 export const FRAGRANCES = [
   {
     id: 1,
@@ -597,6 +597,216 @@ export const FRAGRANCES = [
     type: "INSPIRED FRAGRANCES",
     notes: "Red Peony, Tangerine & Madagascar Vanilla",
     description: "A sophisticated warm floral profile with sweet fruit accords and comforting vanilla elegance.",
+    image: "/assets/attar_floral.png",
+    isFeatured: false
+  },
+  {
+    id: 61,
+    name: "LATAFA ECLAIRS",
+    category: "UNISEX",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Caramel, Milk, Honey, Vanilla & Praline",
+    description: "A creamy, indulgent gourmand fragrance profile with rich caramel sweetness and warm velvety vanilla.",
+    image: "/assets/perfume_gold.png",
+    isFeatured: true
+  },
+  {
+    id: 62,
+    name: "JAGUAR BLUE",
+    category: "MEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Mandarin, Bergamot, Lavender, Lotus & Sandalwood",
+    description: "A vibrant fresh aquatic fragrance profile blending sparkling citrus with cool herbal blossoms.",
+    image: "/assets/perfume_gold.png",
+    isFeatured: false
+  },
+  {
+    id: 63,
+    name: "ZARA BLACK",
+    category: "MEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Dark Amber, Passionfruit, Vanilla & Vetiver",
+    description: "A bold night-time scent profile with intense dark amber accords and subtle exotic sweetness.",
+    image: "/assets/perfume_dark.png",
+    isFeatured: false
+  },
+  {
+    id: 64,
+    name: "JPG SCANDAL",
+    category: "WOMEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Honey, Blood Orange, Gardenia & Patchouli",
+    description: "A sensual, provocative fragrance profile combining rich golden honey with vibrant orange blossom.",
+    image: "/assets/attar_floral.png",
+    isFeatured: true
+  },
+  {
+    id: 65,
+    name: "AMIR AL OUD",
+    category: "UNISEX",
+    type: "ATTAR",
+    notes: "Intense Agarwood, Vanilla, Sugar & Woody Resin",
+    description: "A traditional concentrated oriental attar profile showcasing warm resinous agarwood and sweet woody spice.",
+    image: "/assets/attar_oriental.png",
+    isFeatured: true
+  },
+  {
+    id: 66,
+    name: "GOOD MORNING",
+    category: "MEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Crisp Citrus, Aquatic Breeze, Clean Linen & Light Musk",
+    description: "An energizing morning wake-up fragrance profile with sparkling fresh citrus and uplifting clean air accords.",
+    image: "/assets/perfume_gold.png",
+    isFeatured: false
+  },
+  {
+    id: 67,
+    name: "HARDLEY DAVIDSON",
+    category: "MEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Rough Leather, Smoky Tobacco, Bergamot & Cedar",
+    description: "A rugged masculine scent profile featuring rich dark leather, warm cedarwood, and spicy tobacco.",
+    image: "/assets/perfume_dark.png",
+    isFeatured: false
+  },
+  {
+    id: 68,
+    name: "BLUE BERRY",
+    category: "WOMEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Wild Blueberry, Sweet Vanilla, Orchid & Soft Musk",
+    description: "A delightful fruity floral fragrance profile overflowing with juicy wild berries and creamy vanilla.",
+    image: "/assets/attar_floral.png",
+    isFeatured: false
+  },
+  {
+    id: 69,
+    name: "GUCCI VOICE OF SNAKE",
+    category: "UNISEX",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Rare Oud, Earthy Patchouli, Saffron & Leather",
+    description: "A hypnotic luxury fragrance profile dominated by deep mysterious agarwood and dark spicy patchouli.",
+    image: "/assets/perfume_dark.png",
+    isFeatured: true
+  },
+  {
+    id: 70,
+    name: "PRADA CANDY",
+    category: "WOMEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Caramel, Benzoin Resin, Soft Powder & White Musk",
+    description: "A playful, sophisticated gourmand fragrance profile featuring opulent caramel and powdery balsamic warmth.",
+    image: "/assets/attar_floral.png",
+    isFeatured: false
+  },
+  {
+    id: 71,
+    name: "SANAYA GOLD",
+    category: "UNISEX",
+    type: "ATTAR",
+    notes: "Golden Amber, Saffron, Rose Nectar & Sweet Oud",
+    description: "A rich royal attar profile blending glowing golden amber with saffron threads and precious flower nectar.",
+    image: "/assets/attar_oriental.png",
+    isFeatured: false
+  },
+  {
+    id: 72,
+    name: "TUSCAN LEATHER",
+    category: "UNISEX",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Tuscan Leather, Wild Raspberry, Thyme & Saffron",
+    description: "An iconic, luxurious scent profile pairing raw smoky leather with sweet dark raspberry and herbal spice.",
+    image: "/assets/perfume_dark.png",
+    isFeatured: true
+  },
+  {
+    id: 73,
+    name: "ARISTOCRAT",
+    category: "MEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Watermelon, Bergamot, Lime, Amber & Musk",
+    description: "A grand, aristocratic fragrance profile combining juicy fresh fruitiness with warm rich amber.",
+    image: "/assets/perfume_gold.png",
+    isFeatured: false
+  },
+  {
+    id: 74,
+    name: "BLACK OPIUM",
+    category: "WOMEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Black Coffee, Vanilla, White Flowers & Cedar",
+    description: "An addictive dark gourmand profile featuring rich roasted coffee beans and sweet floral vanilla.",
+    image: "/assets/perfume_dark.png",
+    isFeatured: true
+  },
+  {
+    id: 75,
+    name: "RED TOBACCO",
+    category: "UNISEX",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Cuban Tobacco, Nutmeg, Cinnamon, Oud & Amber",
+    description: "A powerful, fiery fragrance profile with spicy cinnamon, warm tobacco leaf, and intense amber wood.",
+    image: "/assets/perfume_dark.png",
+    isFeatured: true
+  },
+  {
+    id: 76,
+    name: "MISS DIOR CHERRY",
+    category: "WOMEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Wild Strawberry, Caramel Popcorn, Jasmine & Patchouli",
+    description: "A charming fruity floral scent profile blending wild strawberries, sweet gourmand notes, and pink flowers.",
+    image: "/assets/attar_floral.png",
+    isFeatured: false
+  },
+  {
+    id: 77,
+    name: "ZATAX",
+    category: "MEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Spiced Citrus, Incense, Vetiver & Dark Woods",
+    description: "An intense, electrifying scent profile with smoky aromatic spices and grounding vetiver wood.",
+    image: "/assets/perfume_dark.png",
+    isFeatured: false
+  },
+  {
+    id: 78,
+    name: "YSL MYSELF",
+    category: "MEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Calabrian Bergamot, Orange Blossom, Ambrofix & Patchouli",
+    description: "A clean, modern masculine scent profile pairing crisp citrus freshness with warm woody orange blossom.",
+    image: "/assets/perfume_gold.png",
+    isFeatured: true
+  },
+  {
+    id: 79,
+    name: "HAWAS BLACK",
+    category: "MEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Pineapple, Bergamot, Passionfruit, Cedar & Oakmoss",
+    description: "A darker, bolder evolution of Hawas with tropical fruits, deep moss, and long-lasting woody accords.",
+    image: "/assets/perfume_dark.png",
+    isFeatured: true
+  },
+  {
+    id: 80,
+    name: "1000 WISHES",
+    category: "WOMEN",
+    type: "INSPIRED FRAGRANCES",
+    notes: "Pink Prosecco, Crystal Peonies, Amaretto & Warm Amber",
+    description: "A sparkling, celebratory fragrance profile with bubbly prosecco, sweet peonies, and warm almond cream.",
+    image: "/assets/attar_floral.png",
+    isFeatured: false
+  },
+  {
+    id: 81,
+    name: "JO MELON P&F",
+    category: "UNISEX",
+    type: "INSPIRED FRAGRANCES",
+    notes: "King William Pear, White Freesia, Melon & Amber",
+    description: "A luscious, crisp floral-fruity scent profile featuring juicy ripe pears and delicate white freesia.",
     image: "/assets/attar_floral.png",
     isFeatured: false
   }

@@ -400,7 +400,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               className="btn-gold"
               style={{ padding: '1rem 2.5rem', fontSize: '0.9rem' }}
             >
-              <span>VIEW FULL CATALOGUE (60 FRAGRANCES)</span>
+              <span>VIEW FULL CATALOGUE ({FRAGRANCES.length} FRAGRANCES)</span>
               <ArrowRight size={18} />
             </button>
           </div>
