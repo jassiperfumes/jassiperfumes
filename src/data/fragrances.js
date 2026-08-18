@@ -7,7 +7,7 @@ export const FRAGRANCES = [
     type: "INSPIRED FRAGRANCES",
     notes: "Spicy Amber & Dark Wood",
     description: "An intense, modern fragrance profile crafted with deep woody undertones and warm amber spice.",
-    image: "/assets/perfumes/perfume_1.png",
+    image: "/assets/perfumes/perfume_1.jpg",
     isFeatured: true
   },
   {
@@ -17,7 +17,7 @@ export const FRAGRANCES = [
     type: "INSPIRED FRAGRANCES",
     notes: "Fresh Citrus, Mint & Caviar Lime",
     description: "A charismatic and vibrant fragrance profile inspired by nightlife energy and crisp metallic warmth.",
-    image: "/assets/perfumes/perfume_2.png",
+    image: "/assets/perfumes/perfume_2.jpg",
     isFeatured: true
   },
   {
