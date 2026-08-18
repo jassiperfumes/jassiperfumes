@@ -67,7 +67,7 @@ export const FRAGRANCES = [
     type: "INSPIRED FRAGRANCES",
     notes: "Bergamot, Citrus & Cedarwood",
     description: "A classic youthful scent profile with clean citrus top notes and smooth wooden base notes.",
-    image: "/assets/perfumes/perfume_7.png",
+    image: "/assets/perfumes/perfume_7.jpg",
     isFeatured: true
   },
   {
