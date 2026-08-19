@@ -228,47 +228,38 @@ export default function CataloguePage({ onSelectFragrance }) {
                       </p>
                     </div>
 
-                    {/* Bottom Price & Add CTA Pill */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '0.4rem' }}>
-                      <div>
-                        <span style={{ display: 'block', fontSize: '0.7rem', color: '#9CA3AF', fontWeight: 500, lineHeight: 1 }}>
-                          Starting
-                        </span>
-                        <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-espresso)', lineHeight: 1.2 }}>
-                          ₹{item.price || (item.type === 'ATTAR' ? '299' : item.type === 'GIFT SET' ? '999' : '499')}
-                        </span>
-                      </div>
-
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          const priceVal = item.price || (item.type === 'ATTAR' ? '299' : item.type === 'GIFT SET' ? '999' : '499');
-                          const text = encodeURIComponent(
-                            `Hi The Perfume Corner! I would like to order "${item.name}" (₹${priceVal}). Please share availability.`
-                          );
-                          window.open(`https://wa.me/919619113993?text=${text}`, '_blank', 'noopener,noreferrer');
-                        }}
-                        style={{
-                          padding: '0.45rem 1.1rem',
-                          fontSize: '0.8rem',
-                          fontWeight: 700,
-                          backgroundColor: '#EC5E7B',
-                          color: '#FFFFFF',
-                          border: 'none',
-                          borderRadius: '50px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.35rem',
-                          cursor: 'pointer',
-                          boxShadow: '0 4px 12px rgba(236, 94, 123, 0.35)',
-                          transition: 'all 0.25s ease'
-                        }}
-                        className="add-to-cart-pill"
-                      >
-                        <ShoppingCart size={15} color="#FFFFFF" />
-                        <span>Add</span>
-                      </button>
-                    </div>
+                    {/* WhatsApp Order Button */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const text = encodeURIComponent(
+                          `Hi The Perfume Corner! I would like to order/inquire about "${item.name}". Please share availability & details.`
+                        );
+                        window.open(`https://wa.me/919619113993?text=${text}`, '_blank', 'noopener,noreferrer');
+                      }}
+                      style={{
+                        width: '100%',
+                        padding: '0.6rem 0.85rem',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        backgroundColor: '#25D366',
+                        color: '#FFFFFF',
+                        border: 'none',
+                        borderRadius: '50px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.4rem',
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 12px rgba(37, 211, 102, 0.35)',
+                        transition: 'all 0.25s ease',
+                        marginTop: '0.5rem'
+                      }}
+                      className="btn-whatsapp-order"
+                    >
+                      <MessageCircle size={16} color="#FFFFFF" />
+                      <span>Order on WhatsApp</span>
+                    </button>
                   </div>
                 </div>
               ))}
@@ -393,9 +384,9 @@ export default function CataloguePage({ onSelectFragrance }) {
           .catalogue-card h3 {
             font-size: 0.95rem !important;
           }
-          .add-to-cart-pill {
-            padding: 0.4rem 0.85rem !important;
-            font-size: 0.725rem !important;
+          .btn-whatsapp-order {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 0.75rem !important;
           }
         }
         .catalogue-card:hover {
@@ -406,9 +397,9 @@ export default function CataloguePage({ onSelectFragrance }) {
         .catalogue-card:hover .cat-card-img {
           transform: scale(1.08);
         }
-        .add-to-cart-pill:hover {
-          transform: scale(1.07);
-          box-shadow: 0 6px 18px rgba(236, 94, 123, 0.5) !important;
+        .btn-whatsapp-order:hover {
+          transform: scale(1.03);
+          box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5) !important;
         }
       `}</style>
     </div>
