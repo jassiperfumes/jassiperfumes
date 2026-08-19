@@ -336,14 +336,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           </div>
 
           {/* 8 Featured Fragrance Grid */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-              gap: '2rem',
-              marginBottom: '3rem'
-            }}
-          >
+          <div className="curated-grid">
             {featuredFragrances.map((item) => (
               <div
                 key={item.id}
@@ -359,7 +352,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                 }}
                 className="perfume-card"
               >
-                <div style={{ position: 'relative', overflow: 'hidden', padding: '1.5rem', backgroundColor: '#FFF9F0', textAlign: 'center' }}>
+                <div className="perfume-card-img-wrap" style={{ position: 'relative', overflow: 'hidden', padding: '1.5rem', backgroundColor: '#FFF9F0', textAlign: 'center' }}>
                   <img
                     src={item.image}
                     alt={item.name}
@@ -371,7 +364,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                   </span>
                 </div>
 
-                <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                <div className="perfume-card-body" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
                   <span style={{ fontSize: '0.7rem', color: 'var(--accent-gold)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem' }}>
                     INSPIRED PROFILE
                   </span>
@@ -538,6 +531,50 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
 
       {/* Card Hover Inline Styling */}
       <style>{`
+        .curated-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.75rem;
+          margin-bottom: 3rem;
+        }
+        @media (max-width: 1024px) {
+          .curated-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+          }
+        }
+        @media (max-width: 640px) {
+          .curated-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.75rem !important;
+            margin-bottom: 2rem !important;
+          }
+          .curated-grid .perfume-card-img-wrap {
+            padding: 0.75rem !important;
+          }
+          .curated-grid .card-img {
+            height: 130px !important;
+          }
+          .curated-grid .perfume-card-body {
+            padding: 0.75rem !important;
+          }
+          .curated-grid .perfume-card-body h3 {
+            font-size: 0.95rem !important;
+            margin-bottom: 0.25rem !important;
+          }
+          .curated-grid .perfume-card-body p {
+            font-size: 0.725rem !important;
+            margin-bottom: 0.75rem !important;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          .curated-grid .btn-secondary {
+            padding: 0.5rem 0.5rem !important;
+            font-size: 0.675rem !important;
+          }
+        }
         @media (max-width: 768px) {
           .responsive-split {
             grid-template-columns: 1fr !important;
