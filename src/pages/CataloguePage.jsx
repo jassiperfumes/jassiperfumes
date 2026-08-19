@@ -179,22 +179,6 @@ export default function CataloguePage({ onSelectFragrance }) {
                       style={{ width: '100%', height: '180px', objectFit: 'contain', transition: 'transform 0.4s ease' }}
                       className="cat-card-img"
                     />
-                    <span
-                      style={{
-                        position: 'absolute',
-                        top: '12px',
-                        right: '12px',
-                        fontSize: '0.65rem',
-                        padding: '0.25rem 0.65rem',
-                        backgroundColor: 'var(--accent-dark-brown)',
-                        color: 'var(--accent-gold-light)',
-                        borderRadius: '50px',
-                        fontWeight: 600,
-                        letterSpacing: '0.05em'
-                      }}
-                    >
-                      {item.category}
-                    </span>
                   </div>
 
                   {/* Card Content Body */}
@@ -222,9 +206,9 @@ export default function CataloguePage({ onSelectFragrance }) {
                         </div>
                       </div>
 
-                      {/* Subtitle / Category text */}
+                      {/* Subtitle / Notes text */}
                       <p style={{ fontSize: '0.775rem', color: '#7A6F68', margin: '0 0 1rem 0', lineHeight: 1.4 }}>
-                        {item.type === 'ATTAR' ? 'Pure Attar Oil' : item.type === 'GIFT SET' ? 'Luxury Gift Set' : 'Inspired Fragrance'} ({item.category})
+                        {item.notes || (item.type === 'ATTAR' ? 'Pure Attar Oil' : item.type === 'GIFT SET' ? 'Luxury Gift Set' : 'Inspired Fragrance Profile')}
                       </p>
                     </div>
 

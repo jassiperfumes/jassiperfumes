@@ -359,9 +359,6 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                     style={{ width: '100%', height: '200px', objectFit: 'contain', transition: 'transform 0.5s ease' }}
                     className="card-img"
                   />
-                  <span className="gold-badge" style={{ position: 'absolute', top: '12px', right: '12px', fontSize: '0.65rem' }}>
-                    {item.category}
-                  </span>
                 </div>
 
                 <div className="perfume-card-body" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
