@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FRAGRANCES, ATTAR_CATEGORIES } from '../data/fragrances';
-import { Search, Filter, Sparkles, MessageCircle, AlertCircle } from 'lucide-react';
+import { Search, Filter, Sparkles, MessageCircle, AlertCircle, Star, ShoppingCart } from 'lucide-react';
 
 export default function CataloguePage({ onSelectFragrance }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -150,35 +150,45 @@ export default function CataloguePage({ onSelectFragrance }) {
                   key={item.id}
                   onClick={() => onSelectFragrance(item)}
                   style={{
-                    backgroundColor: 'var(--bg-cream)',
-                    border: '1px solid var(--accent-gold-border)',
-                    borderRadius: '4px',
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid #ECE5DB',
+                    borderRadius: '16px',
                     overflow: 'hidden',
-                    transition: 'var(--transition-smooth)',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                     cursor: 'pointer',
                     display: 'flex',
                     flexDirection: 'column',
-                    boxShadow: 'var(--shadow-subtle)'
+                    boxShadow: '0 4px 16px rgba(43, 33, 27, 0.06)'
                   }}
                   className="catalogue-card"
                 >
-                  <div style={{ position: 'relative', padding: '1.25rem', backgroundColor: 'var(--bg-warm-beige)', textAlign: 'center' }}>
+                  {/* Top Image Container */}
+                  <div
+                    style={{
+                      position: 'relative',
+                      padding: '1.25rem',
+                      backgroundColor: '#FAF7F2',
+                      textAlign: 'center',
+                      borderBottom: '1px solid #F3EDE3'
+                    }}
+                    className="cat-card-img-wrap"
+                  >
                     <img
                       src={item.image}
                       alt={item.name}
-                      style={{ width: '100%', height: '170px', objectFit: 'contain', transition: 'transform 0.4s ease' }}
+                      style={{ width: '100%', height: '180px', objectFit: 'contain', transition: 'transform 0.4s ease' }}
                       className="cat-card-img"
                     />
                     <span
                       style={{
                         position: 'absolute',
-                        top: '10px',
-                        right: '10px',
+                        top: '12px',
+                        right: '12px',
                         fontSize: '0.65rem',
-                        padding: '0.2rem 0.6rem',
+                        padding: '0.25rem 0.65rem',
                         backgroundColor: 'var(--accent-dark-brown)',
-                        color: 'var(--accent-gold)',
-                        borderRadius: '3px',
+                        color: 'var(--accent-gold-light)',
+                        borderRadius: '50px',
                         fontWeight: 600,
                         letterSpacing: '0.05em'
                       }}
@@ -187,46 +197,78 @@ export default function CataloguePage({ onSelectFragrance }) {
                     </span>
                   </div>
 
-                  <div style={{ padding: '1.2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                    <span style={{ fontSize: '0.65rem', color: 'var(--accent-gold)', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600 }}>
-                      {item.type}
-                    </span>
-                    <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: 'var(--text-espresso)', margin: '0.2rem 0 0.4rem 0' }}>
-                      {item.name}
-                    </h3>
-                    <p style={{ fontSize: '0.775rem', color: 'var(--text-espresso-muted)', lineHeight: 1.4, marginBottom: '1rem', flexGrow: 1 }}>
-                      {item.notes}
-                    </p>
+                  {/* Card Content Body */}
+                  <div style={{ padding: '1.15rem', display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between' }}>
+                    <div>
+                      {/* Title & Star Rating Row */}
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.5rem', marginBottom: '0.35rem' }}>
+                        <h3
+                          style={{
+                            fontFamily: 'var(--font-serif)',
+                            fontSize: '1.1rem',
+                            fontWeight: 700,
+                            color: 'var(--text-espresso)',
+                            margin: 0,
+                            lineHeight: 1.25
+                          }}
+                        >
+                          {item.name}
+                        </h3>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', flexShrink: 0, marginTop: '2px' }}>
+                          <Star size={15} color="#EAB308" fill="#EAB308" />
+                          <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-espresso)' }}>
+                            4.9
+                          </span>
+                        </div>
+                      </div>
 
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const text = encodeURIComponent(
-                          `Hi The Perfume Corner! I would like to order/inquire about "${item.name}". Please share availability & pricing.`
-                        );
-                        window.open(`https://wa.me/919619113993?text=${text}`, '_blank', 'noopener,noreferrer');
-                      }}
-                      style={{
-                        width: '100%',
-                        padding: '0.55rem 0.75rem',
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        backgroundColor: '#25D366',
-                        color: '#FFFFFF',
-                        border: 'none',
-                        borderRadius: '4px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '0.4rem',
-                        cursor: 'pointer',
-                        transition: 'var(--transition-fast)'
-                      }}
-                      className="btn-whatsapp-order"
-                    >
-                      <MessageCircle size={15} color="#FFFFFF" />
-                      <span>Order on WhatsApp</span>
-                    </button>
+                      {/* Subtitle / Category text */}
+                      <p style={{ fontSize: '0.775rem', color: '#7A6F68', margin: '0 0 1rem 0', lineHeight: 1.4 }}>
+                        {item.type === 'ATTAR' ? 'Pure Attar Oil' : item.type === 'GIFT SET' ? 'Luxury Gift Set' : 'Inspired Fragrance'} ({item.category})
+                      </p>
+                    </div>
+
+                    {/* Bottom Price & Add CTA Pill */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '0.4rem' }}>
+                      <div>
+                        <span style={{ display: 'block', fontSize: '0.7rem', color: '#9CA3AF', fontWeight: 500, lineHeight: 1 }}>
+                          Starting
+                        </span>
+                        <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-espresso)', lineHeight: 1.2 }}>
+                          ₹{item.price || (item.type === 'ATTAR' ? '299' : item.type === 'GIFT SET' ? '999' : '499')}
+                        </span>
+                      </div>
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const priceVal = item.price || (item.type === 'ATTAR' ? '299' : item.type === 'GIFT SET' ? '999' : '499');
+                          const text = encodeURIComponent(
+                            `Hi The Perfume Corner! I would like to order "${item.name}" (₹${priceVal}). Please share availability.`
+                          );
+                          window.open(`https://wa.me/919619113993?text=${text}`, '_blank', 'noopener,noreferrer');
+                        }}
+                        style={{
+                          padding: '0.45rem 1.1rem',
+                          fontSize: '0.8rem',
+                          fontWeight: 700,
+                          backgroundColor: '#EC5E7B',
+                          color: '#FFFFFF',
+                          border: 'none',
+                          borderRadius: '50px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.35rem',
+                          cursor: 'pointer',
+                          boxShadow: '0 4px 12px rgba(236, 94, 123, 0.35)',
+                          transition: 'all 0.25s ease'
+                        }}
+                        className="add-to-cart-pill"
+                      >
+                        <ShoppingCart size={15} color="#FFFFFF" />
+                        <span>Add</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -334,21 +376,39 @@ export default function CataloguePage({ onSelectFragrance }) {
         @media (max-width: 1024px) {
           .catalogue-grid {
             grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
           }
         }
         @media (max-width: 640px) {
           .catalogue-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+            gap: 0.85rem;
+          }
+          .catalogue-card .cat-card-img-wrap {
+            padding: 0.85rem !important;
+          }
+          .catalogue-card .cat-card-img {
+            height: 135px !important;
+          }
+          .catalogue-card h3 {
+            font-size: 0.95rem !important;
+          }
+          .add-to-cart-pill {
+            padding: 0.4rem 0.85rem !important;
+            font-size: 0.725rem !important;
           }
         }
         .catalogue-card:hover {
-          transform: translateY(-5px);
-          border-color: var(--accent-gold) !important;
-          box-shadow: var(--shadow-gold) !important;
+          transform: translateY(-6px);
+          box-shadow: 0 12px 28px rgba(43, 33, 27, 0.12) !important;
+          border-color: #D6CBBF !important;
         }
         .catalogue-card:hover .cat-card-img {
           transform: scale(1.08);
+        }
+        .add-to-cart-pill:hover {
+          transform: scale(1.07);
+          box-shadow: 0 6px 18px rgba(236, 94, 123, 0.5) !important;
         }
       `}</style>
     </div>
