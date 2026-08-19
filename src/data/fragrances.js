@@ -76,7 +76,8 @@ export const FRAGRANCES = [
     category: "MEN",
     type: "INSPIRED FRAGRANCES",
     notes: "Crisp Apple, Cinnamon & Sandalwood",
-    description: "An iconic, elegant fragrance profile combining warm fruitiness with refined wooden warmth.",
+    description: "An iconic",
+    elegant: "fragrance profile combining warm fruitiness with refined wooden warmth.",
     image: "/assets/perfumes/perfume_8.jpg",
     isFeatured: true
   },
@@ -512,7 +513,7 @@ export const FRAGRANCES = [
   },
   {
     id: 52,
-    name: "TERRE D'HERMES",
+    name: "TERE DE HERMES",
     category: "MEN",
     type: "INSPIRED FRAGRANCES",
     notes: "Orange, Grapefruit, Flint & Cedarwood",
@@ -802,13 +803,43 @@ export const FRAGRANCES = [
   },
   {
     id: 81,
-    name: "JO MELON P&F",
-    category: "UNISEX",
-    type: "INSPIRED FRAGRANCES",
-    notes: "King William Pear, White Freesia, Melon & Amber",
-    description: "A luscious, crisp floral-fruity scent profile featuring juicy ripe pears and delicate white freesia.",
-    image: "/assets/perfumes/perfume_81.png",
-    isFeatured: false
+    name: "ROYAL ATTAR GIFT BOX",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    notes: "Custom 4x6ml Concentrated Attar Selection in Velvet Box",
+    description: "An opulent gift collection featuring four handcrafted concentrated attars in elegant glass bottles, presented in a velvet gift box.",
+    image: "/assets/attar_oriental.png",
+    isFeatured: true
+  },
+  {
+    id: 82,
+    name: "EXECUTIVE FRAGRANCE TRIO",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    notes: "3x50ml Custom Spray Perfumes & Travel Case",
+    description: "A luxury trio set of signature inspired spray fragrances tailored for executive gifting, complete with a velvet travel sleeve.",
+    image: "/assets/perfume_dark.png",
+    isFeatured: true
+  },
+  {
+    id: 83,
+    name: "LUXURY OUD & BAKHOOR HAMPER",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    notes: "Pure Bakhoor, Brass Burner & 12ml Royal Oud Attar",
+    description: "A ceremonial fragrance hamper combining pure aged Cambodian Oud attar with hand-carved incense chips and an ornate burner.",
+    image: "/assets/attar_woody.png",
+    isFeatured: true
+  },
+  {
+    id: 84,
+    name: "POCKET PERFUME DISCOVERY SET",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    notes: "6x10ml Mini Pocket Spray Samplers",
+    description: "The ultimate trial set featuring 6 top-selling unisex fragrances in compact pocket-sized spray bottles.",
+    image: "/assets/perfume_gold.png",
+    isFeatured: true
   }
 ];
 

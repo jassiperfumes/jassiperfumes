@@ -27,7 +27,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
     return () => clearInterval(interval);
   }, []);
 
-  const featuredFragrances = FRAGRANCES.filter((item) => item.isFeatured);
+  const featuredFragrances = FRAGRANCES.filter((item) => item.isFeatured).slice(0, 8);
 
   return (
     <div className="animate-fade-in">

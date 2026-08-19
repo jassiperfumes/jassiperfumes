@@ -8,27 +8,25 @@ export default function CataloguePage({ onSelectFragrance }) {
 
   const categories = [
     'ALL',
-    'MEN',
-    'WOMEN',
-    'UNISEX',
-    'ATTAR',
-    'INSPIRED FRAGRANCES'
+    'FRAGRANCES',
+    'GIFT ITEMS'
   ];
 
   const filteredFragrances = FRAGRANCES.filter((item) => {
     // Category match
     let matchesCategory = true;
-    if (activeCategory === 'MEN') matchesCategory = item.category === 'MEN';
-    else if (activeCategory === 'WOMEN') matchesCategory = item.category === 'WOMEN';
-    else if (activeCategory === 'UNISEX') matchesCategory = item.category === 'UNISEX';
-    else if (activeCategory === 'ATTAR') matchesCategory = item.type === 'ATTAR';
-    else if (activeCategory === 'INSPIRED FRAGRANCES') matchesCategory = item.type === 'INSPIRED FRAGRANCES';
+    if (activeCategory === 'FRAGRANCES') {
+      matchesCategory = item.category !== 'GIFT ITEMS' && item.type !== 'GIFT SET';
+    } else if (activeCategory === 'GIFT ITEMS') {
+      matchesCategory = item.category === 'GIFT ITEMS' || item.type === 'GIFT SET';
+    }
 
     // Search query match
     const matchesSearch =
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.notes.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.category.toLowerCase().includes(searchQuery.toLowerCase());
+      (item.category && item.category.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (item.type && item.type.toLowerCase().includes(searchQuery.toLowerCase()));
 
     return matchesCategory && matchesSearch;
   });
