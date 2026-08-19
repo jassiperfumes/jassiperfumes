@@ -199,10 +199,33 @@ export default function CataloguePage({ onSelectFragrance }) {
                     </p>
 
                     <button
-                      className="btn-secondary"
-                      style={{ width: '100%', padding: '0.5rem 0.75rem', fontSize: '0.725rem' }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const text = encodeURIComponent(
+                          `Hi The Perfume Corner! I would like to order/inquire about "${item.name}". Please share availability & pricing.`
+                        );
+                        window.open(`https://wa.me/919619113993?text=${text}`, '_blank', 'noopener,noreferrer');
+                      }}
+                      style={{
+                        width: '100%',
+                        padding: '0.55rem 0.75rem',
+                        fontSize: '0.75rem',
+                        fontWeight: 600,
+                        backgroundColor: '#25D366',
+                        color: '#FFFFFF',
+                        border: 'none',
+                        borderRadius: '4px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.4rem',
+                        cursor: 'pointer',
+                        transition: 'var(--transition-fast)'
+                      }}
+                      className="btn-whatsapp-order"
                     >
-                      Explore Details
+                      <MessageCircle size={15} color="#FFFFFF" />
+                      <span>Order on WhatsApp</span>
                     </button>
                   </div>
                 </div>
