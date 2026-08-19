@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FRAGRANCES } from '../data/fragrances';
-import { Phone, MessageCircle, ArrowRight, Sparkles, Droplet, ShieldCheck, Heart, MapPin, Award, Compass, Star } from 'lucide-react';
+import { Phone, MessageCircle, ArrowRight, Sparkles, Droplet, ShieldCheck, Heart, MapPin, Award, Compass, Star, CheckCircle2 } from 'lucide-react';
 
 export default function HomePage({ setCurrentPage, onSelectFragrance }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -270,17 +270,17 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
         </div>
       </section>
 
-      {/* ABOUT INTRO SECTION */}
+      {/* ABOUT INTRO SECTION (Merged) */}
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-warm-beige)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '3.5rem', alignItems: 'center' }} className="responsive-split">
             {/* Left Image */}
             <div style={{ position: 'relative' }}>
-              <div style={{ border: '1px solid var(--accent-gold)', padding: '1rem', background: 'var(--bg-cream)', boxShadow: 'var(--shadow-medium)' }}>
+              <div style={{ border: '1px solid var(--accent-gold)', padding: '1rem', background: 'var(--bg-cream)', boxShadow: 'var(--shadow-medium)', borderRadius: '4px' }}>
                 <img
                   src="/assets/about_attar.png"
                   alt="Traditional Attar Bottle"
-                  style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block' }}
+                  style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block', borderRadius: '2px' }}
                 />
               </div>
               <div style={{ position: 'absolute', bottom: '-15px', right: '-15px', background: 'var(--accent-dark-brown)', color: 'var(--accent-gold)', padding: '1rem 1.5rem', fontFamily: 'var(--font-serif)', fontSize: '0.9rem', fontStyle: 'italic', border: '1px solid var(--accent-gold)' }}>
@@ -297,24 +297,52 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                 style={{
                   fontFamily: 'var(--font-serif)',
                   fontSize: 'clamp(2rem, 3vw, 2.8rem)',
-                  lineHeight: 1.25,
-                  marginBottom: '1.5rem',
+                  lineHeight: 1.2,
+                  marginBottom: '1.25rem',
                   color: 'var(--text-espresso)'
                 }}
               >
                 Where Fragrance Meets Tradition
               </h2>
-              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'var(--text-espresso-muted)', marginBottom: '2rem' }}>
-                The Perfume Corner is a local fragrance destination in Malad East, Mumbai, specializing in attar and inspired fragrance profiles. We bring together timeless fragrance traditions and modern scent preferences to help you discover a fragrance that feels uniquely yours.
+              <p style={{ fontSize: '0.975rem', lineHeight: 1.8, color: 'var(--text-espresso-muted)', marginBottom: '1rem' }}>
+                The Perfume Corner is your local fragrance boutique in Malad East, Mumbai, specializing in concentrated attars and inspired fragrance profiles. We believe fragrance is more than a scent — it is part of your personal identity.
               </p>
+              <p style={{ fontSize: '0.975rem', lineHeight: 1.8, color: 'var(--text-espresso-muted)', marginBottom: '1.5rem' }}>
+                Whether you prefer fresh, woody, floral, sweet, oriental or rich oud-based scents, our collection brings together timeless traditions and modern scent preferences.
+              </p>
+
+              {/* Highlights */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-espresso)' }}>
+                  <CheckCircle2 size={18} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
+                  <span>100% Alcohol-Free Pure Attar Oils</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-espresso)' }}>
+                  <CheckCircle2 size={18} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
+                  <span>Designer-Inspired Signature Fragrance Profiles</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-espresso)' }}>
+                  <CheckCircle2 size={18} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
+                  <span>Personalized Scent Selection & Store Consultation</span>
+                </div>
+              </div>
               
-              <button
-                onClick={() => { setCurrentPage('about-contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="btn-primary"
-              >
-                <span>KNOW MORE</span>
-                <ArrowRight size={16} />
-              </button>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <button
+                  onClick={() => { setCurrentPage('catalogue'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  className="btn-gold"
+                >
+                  <span>EXPLORE COLLECTION</span>
+                  <ArrowRight size={16} />
+                </button>
+
+                <button
+                  onClick={() => { setCurrentPage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  className="btn-secondary"
+                >
+                  <span>STORE LOCATION</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -405,9 +433,9 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                       </div>
                     </div>
 
-                    {/* Subtitle / Notes text */}
-                    <p style={{ fontSize: '0.775rem', color: '#7A6F68', margin: '0 0 1rem 0', lineHeight: 1.4 }}>
-                      {item.notes || (item.type === 'ATTAR' ? 'Pure Attar Oil' : item.type === 'GIFT SET' ? 'Luxury Gift Set' : 'Inspired Fragrance Profile')}
+                    {/* Subtitle text */}
+                    <p style={{ fontSize: '0.725rem', color: '#7A6F68', margin: '0 0 1rem 0', lineHeight: 1.4, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.03em' }}>
+                      INSPIRED FRAGRANCE FROM ORIGINAL VERSION
                     </p>
                   </div>
 

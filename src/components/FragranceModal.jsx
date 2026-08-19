@@ -78,14 +78,15 @@ export default function FragranceModal({ fragrance, onClose }) {
               </h2>
               <p
                 style={{
-                  fontSize: '0.9rem',
+                  fontSize: '0.825rem',
                   color: 'var(--accent-gold)',
-                  fontStyle: 'italic',
+                  letterSpacing: '0.04em',
                   marginBottom: '0.75rem',
-                  fontWeight: 500
+                  fontWeight: 600,
+                  textTransform: 'uppercase'
                 }}
               >
-                An inspired fragrance profile available at The Perfume Corner.
+                INSPIRED FRAGRANCE FROM ORIGINAL VERSION
               </p>
               
               <div style={{ fontSize: '0.85rem', color: 'var(--text-espresso-muted)', lineHeight: 1.6, marginBottom: '1rem' }}>

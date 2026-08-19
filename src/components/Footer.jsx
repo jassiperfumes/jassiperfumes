@@ -71,27 +71,14 @@ export default function Footer({ setCurrentPage }) {
                   onClick={() => { setCurrentPage('catalogue'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                   style={{ color: 'rgba(255, 249, 240, 0.8)', transition: 'var(--transition-fast)' }}
                 >
-                  Fragrance Catalogue ({FRAGRANCES.length} Scents)
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => { setCurrentPage('about'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  style={{ color: 'rgba(255, 249, 240, 0.8)', transition: 'var(--transition-fast)' }}
-                >
-                  About Our Heritage
+                  Fragrance Catalogue
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => {
                     setCurrentPage('contact');
-                    setTimeout(() => {
-                      const contactEl = document.getElementById('contact');
-                      if (contactEl) {
-                        contactEl.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }, 50);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   style={{ color: 'rgba(255, 249, 240, 0.8)', transition: 'var(--transition-fast)' }}
                 >

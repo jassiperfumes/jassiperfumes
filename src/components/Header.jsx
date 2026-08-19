@@ -16,7 +16,6 @@ export default function Header({ currentPage, setCurrentPage }) {
   const navItems = [
     { id: 'home', label: 'HOME' },
     { id: 'catalogue', label: 'CATALOGUE' },
-    { id: 'about', label: 'ABOUT' },
     { id: 'contact', label: 'CONTACT' },
   ];
 

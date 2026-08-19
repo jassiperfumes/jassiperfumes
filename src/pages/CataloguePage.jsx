@@ -38,7 +38,7 @@ export default function CataloguePage({ onSelectFragrance }) {
         style={{
           backgroundColor: 'var(--accent-dark-brown)',
           color: '#FFF9F0',
-          padding: '4rem 0 3.5rem 0',
+          padding: '2.25rem 0 2rem 0',
           borderBottom: '2px solid var(--accent-gold)',
           textAlign: 'center'
         }}
@@ -50,14 +50,14 @@ export default function CataloguePage({ onSelectFragrance }) {
           <h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)',
-              margin: '0.5rem 0 1rem 0',
+              fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
+              margin: '0.35rem 0 0.5rem 0',
               color: '#FFF9F0'
             }}
           >
             FRAGRANCE COLLECTION
           </h1>
-          <p style={{ fontSize: '1.05rem', color: 'rgba(255, 249, 240, 0.85)', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '0.95rem', color: 'rgba(255, 249, 240, 0.85)', lineHeight: 1.6 }}>
             Explore {FRAGRANCES.length} fragrance profiles available at The Perfume Corner.
           </p>
         </div>
@@ -207,9 +207,9 @@ export default function CataloguePage({ onSelectFragrance }) {
                         </div>
                       </div>
 
-                      {/* Subtitle / Notes text */}
-                      <p style={{ fontSize: '0.775rem', color: '#7A6F68', margin: '0 0 1rem 0', lineHeight: 1.4 }}>
-                        {item.notes || (item.type === 'ATTAR' ? 'Pure Attar Oil' : item.type === 'GIFT SET' ? 'Luxury Gift Set' : 'Inspired Fragrance Profile')}
+                      {/* Subtitle text */}
+                      <p style={{ fontSize: '0.725rem', color: '#7A6F68', margin: '0 0 1rem 0', lineHeight: 1.4, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.03em' }}>
+                        INSPIRED FRAGRANCE FROM ORIGINAL VERSION
                       </p>
                     </div>
 
