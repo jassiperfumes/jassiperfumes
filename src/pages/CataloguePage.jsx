@@ -166,17 +166,18 @@ export default function CataloguePage({ onSelectFragrance }) {
                   <div
                     style={{
                       position: 'relative',
-                      padding: '1.25rem',
                       backgroundColor: '#FAF7F2',
                       textAlign: 'center',
-                      borderBottom: '1px solid #F3EDE3'
+                      borderBottom: '1px solid #F3EDE3',
+                      overflow: 'hidden',
+                      aspectRatio: '4 / 5'
                     }}
                     className="cat-card-img-wrap"
                   >
                     <img
                       src={item.image}
                       alt={item.name}
-                      style={{ width: '100%', height: '180px', objectFit: 'contain', transition: 'transform 0.4s ease' }}
+                      style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', transition: 'transform 0.4s ease' }}
                       className="cat-card-img"
                     />
                   </div>
@@ -358,12 +359,6 @@ export default function CataloguePage({ onSelectFragrance }) {
           .catalogue-grid {
             grid-template-columns: repeat(2, 1fr);
             gap: 0.85rem;
-          }
-          .catalogue-card .cat-card-img-wrap {
-            padding: 0.85rem !important;
-          }
-          .catalogue-card .cat-card-img {
-            height: 135px !important;
           }
           .catalogue-card h3 {
             font-size: 0.95rem !important;

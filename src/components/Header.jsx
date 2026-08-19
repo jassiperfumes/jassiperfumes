@@ -166,13 +166,19 @@ export default function Header({ currentPage, setCurrentPage }) {
       {mobileMenuOpen && (
         <div
           style={{
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            width: '100%',
             backgroundColor: 'var(--bg-cream)',
             borderBottom: '1px solid var(--accent-gold-border)',
             padding: '1.5rem',
             display: 'flex',
             flexDirection: 'column',
             gap: '1.2rem',
-            boxShadow: 'var(--shadow-medium)',
+            boxShadow: '0 10px 25px rgba(43, 33, 27, 0.15)',
+            zIndex: 999,
             animation: 'fadeIn 0.3s ease-out'
           }}
         >

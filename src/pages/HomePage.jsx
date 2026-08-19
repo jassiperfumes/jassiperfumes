@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FRAGRANCES } from '../data/fragrances';
-import { Phone, MessageCircle, ArrowRight, Sparkles, Droplet, ShieldCheck, Heart, MapPin, Award, Compass } from 'lucide-react';
+import { Phone, MessageCircle, ArrowRight, Sparkles, Droplet, ShieldCheck, Heart, MapPin, Award, Compass, Star } from 'lucide-react';
 
 export default function HomePage({ setCurrentPage, onSelectFragrance }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -8,22 +8,31 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
   const heroSlides = [
     {
       image: '/assets/hero_slide_1.png',
-      caption: 'Pure Concentrated Perfume Oils & Artisanal Blends'
+      badge: 'THE PERFUME CORNER',
+      title: 'THE ART OF FRAGRANCE',
+      italic: 'Pure Concentrated Perfume Oils & Artisanal Blends',
+      description: 'Discover elegant fragrance profiles inspired by iconic perfumes and crafted for your everyday signature.'
     },
     {
       image: '/assets/hero_slide_2.png',
-      caption: 'Traditional Indian Attars Crafted for Character & Longevity'
+      badge: 'TRADITIONAL ATTARS',
+      title: 'TIMELESS ESSENCE',
+      italic: 'Hand-Poured Oils Crafted for Depth & Character',
+      description: 'Experience rich, alcohol-free fragrance oils tailored for long-lasting sophistication.'
     },
     {
       image: '/assets/hero_slide_3.png',
-      caption: 'Iconic Inspired Fragrance Profiles for Modern Wear'
+      badge: 'INSPIRED COLLECTION',
+      title: 'SIGNATURE SCENTS',
+      italic: 'Iconic Inspired Fragrance Profiles for Modern Wear',
+      description: 'Explore affordable luxury inspired by world-renowned perfume creations.'
     }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 4500);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
@@ -35,7 +44,6 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
       <section
         style={{
           position: 'relative',
-          minHeight: '85vh',
           display: 'flex',
           alignItems: 'center',
           justify: 'center',
@@ -43,6 +51,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           backgroundColor: '#2B211B',
           color: '#FFF9F0'
         }}
+        className="home-hero-section"
       >
         {/* Slideshow Background */}
         {heroSlides.map((slide, index) => (
@@ -52,7 +61,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               position: 'absolute',
               inset: 0,
               opacity: currentSlide === index ? 1 : 0,
-              transition: 'opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
+              transition: 'opacity 0.8s ease-in-out',
               zIndex: 1
             }}
           >
@@ -63,8 +72,8 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                transform: currentSlide === index ? 'scale(1.05)' : 'scale(1)',
-                transition: 'transform 6s ease-out',
+                transform: currentSlide === index ? 'scale(1.08)' : 'scale(1)',
+                transition: 'transform 2s ease-out',
                 filter: 'brightness(0.65)'
               }}
             />
@@ -81,9 +90,10 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           }}
         />
 
-        {/* Hero Content */}
+        {/* Hero Content with Bottom-to-Up Slide Animations */}
         <div
-          className="container"
+          key={currentSlide}
+          className="container hero-animated-content"
           style={{
             position: 'relative',
             zIndex: 10,
@@ -93,7 +103,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             maxWidth: '850px'
           }}
         >
-          <div style={{ marginBottom: '1rem' }}>
+          <div className="hero-slide-badge" style={{ marginBottom: '1rem' }}>
             <span
               style={{
                 fontFamily: 'var(--font-sans)',
@@ -109,11 +119,12 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                 backdropFilter: 'blur(4px)'
               }}
             >
-              THE PERFUME CORNER
+              {heroSlides[currentSlide].badge}
             </span>
           </div>
 
           <h1
+            className="hero-slide-title"
             style={{
               fontFamily: 'var(--font-serif)',
               fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
@@ -125,10 +136,11 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               textShadow: '0 4px 15px rgba(0,0,0,0.4)'
             }}
           >
-            THE ART OF FRAGRANCE
+            {heroSlides[currentSlide].title}
           </h1>
 
           <p
+            className="hero-slide-italic"
             style={{
               fontFamily: 'var(--font-serif)',
               fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
@@ -138,10 +150,11 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               fontWeight: 400
             }}
           >
-            Premium Attar & Branded-Inspired Fragrance Collection
+            {heroSlides[currentSlide].italic}
           </p>
 
           <p
+            className="hero-slide-desc"
             style={{
               fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)',
               color: 'rgba(255, 249, 240, 0.9)',
@@ -151,10 +164,10 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               margin: '0 auto 2.5rem auto'
             }}
           >
-            Discover elegant fragrance profiles inspired by iconic perfumes and crafted for your everyday signature.
+            {heroSlides[currentSlide].description}
           </p>
 
-          <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="hero-slide-buttons" style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button
               onClick={() => { setCurrentPage('catalogue'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="btn-gold"
@@ -192,29 +205,22 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
         </div>
       </section>
 
-      {/* TRUST STRIP */}
+      {/* TRUST STRIP (2x2 Grid with Animations) */}
       <section
         style={{
           backgroundColor: 'var(--bg-cream)',
-          borderBottom: '1px solid var(--accent-gold-border)',
-          padding: '2.5rem 0'
+          borderBottom: '1px solid var(--accent-gold-border)'
         }}
+        className="home-trust-section"
       >
         <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-              gap: '2rem',
-              textAlign: 'center'
-            }}
-          >
+          <div className="trust-2x2-grid">
             {/* Item 1 */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 0.5rem' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', border: '1px solid var(--accent-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', backgroundColor: 'var(--bg-warm-beige)' }}>
-                <Droplet size={22} color="var(--accent-gold)" />
+            <div className="trust-card">
+              <div className="trust-icon-badge">
+                <Droplet size={24} color="var(--accent-gold)" />
               </div>
-              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase' }}>
+              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase', color: 'var(--text-espresso)', fontWeight: 700 }}>
                 PREMIUM ATTAR
               </h4>
               <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)' }}>
@@ -223,11 +229,11 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             </div>
 
             {/* Item 2 */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 0.5rem' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', border: '1px solid var(--accent-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', backgroundColor: 'var(--bg-warm-beige)' }}>
-                <Sparkles size={22} color="var(--accent-gold)" />
+            <div className="trust-card">
+              <div className="trust-icon-badge">
+                <Sparkles size={24} color="var(--accent-gold)" />
               </div>
-              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase' }}>
+              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase', color: 'var(--text-espresso)', fontWeight: 700 }}>
                 INSPIRED FRAGRANCES
               </h4>
               <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)' }}>
@@ -236,11 +242,11 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             </div>
 
             {/* Item 3 */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 0.5rem' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', border: '1px solid var(--accent-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', backgroundColor: 'var(--bg-warm-beige)' }}>
-                <Award size={22} color="var(--accent-gold)" />
+            <div className="trust-card">
+              <div className="trust-icon-badge">
+                <Award size={24} color="var(--accent-gold)" />
               </div>
-              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase' }}>
+              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase', color: 'var(--text-espresso)', fontWeight: 700 }}>
                 PERSONAL FRAGRANCE SERVICE
               </h4>
               <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)' }}>
@@ -249,11 +255,11 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             </div>
 
             {/* Item 4 */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 0.5rem' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', border: '1px solid var(--accent-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', backgroundColor: 'var(--bg-warm-beige)' }}>
-                <MapPin size={22} color="var(--accent-gold)" />
+            <div className="trust-card">
+              <div className="trust-icon-badge">
+                <MapPin size={24} color="var(--accent-gold)" />
               </div>
-              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase' }}>
+              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase', color: 'var(--text-espresso)', fontWeight: 700 }}>
                 MALAD EAST, MUMBAI
               </h4>
               <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)' }}>
@@ -317,7 +323,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
       {/* FEATURED FRAGRANCES SECTION */}
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-cream)', borderTop: '1px solid var(--accent-gold-border)', borderBottom: '1px solid var(--accent-gold-border)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 3.5rem auto' }}>
+          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 3.5rem auto' }} className="section-header-wrap">
             <span style={{ fontSize: '0.8rem', letterSpacing: '0.2em', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase' }}>
               CURATED SELECTION
             </span>
@@ -340,44 +346,102 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             {featuredFragrances.map((item) => (
               <div
                 key={item.id}
+                onClick={() => onSelectFragrance(item)}
                 style={{
-                  backgroundColor: 'var(--bg-warm-beige)',
-                  border: '1px solid var(--accent-gold-border)',
-                  borderRadius: '4px',
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #ECE5DB',
+                  borderRadius: '16px',
                   overflow: 'hidden',
-                  transition: 'var(--transition-smooth)',
-                  boxShadow: 'var(--shadow-subtle)',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  cursor: 'pointer',
                   display: 'flex',
-                  flexDirection: 'column'
+                  flexDirection: 'column',
+                  boxShadow: '0 4px 16px rgba(43, 33, 27, 0.06)'
                 }}
-                className="perfume-card"
+                className="catalogue-card"
               >
-                <div className="perfume-card-img-wrap" style={{ position: 'relative', overflow: 'hidden', padding: '1.5rem', backgroundColor: '#FFF9F0', textAlign: 'center' }}>
+                {/* Top Image Container */}
+                <div
+                  style={{
+                    position: 'relative',
+                    backgroundColor: '#FAF7F2',
+                    textAlign: 'center',
+                    borderBottom: '1px solid #F3EDE3',
+                    overflow: 'hidden',
+                    aspectRatio: '4 / 5'
+                  }}
+                  className="cat-card-img-wrap"
+                >
                   <img
                     src={item.image}
                     alt={item.name}
-                    style={{ width: '100%', height: '200px', objectFit: 'contain', transition: 'transform 0.5s ease' }}
-                    className="card-img"
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', transition: 'transform 0.4s ease' }}
+                    className="cat-card-img"
                   />
                 </div>
 
-                <div className="perfume-card-body" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                  <span style={{ fontSize: '0.7rem', color: 'var(--accent-gold)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem' }}>
-                    INSPIRED PROFILE
-                  </span>
-                  <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-espresso)' }}>
-                    {item.name}
-                  </h3>
-                  <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)', lineHeight: 1.5, marginBottom: '1.2rem', flexGrow: 1 }}>
-                    {item.notes}
-                  </p>
+                {/* Card Content Body */}
+                <div style={{ padding: '1.15rem', display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between' }}>
+                  <div>
+                    {/* Title & Star Rating Row */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.5rem', marginBottom: '0.35rem' }}>
+                      <h3
+                        style={{
+                          fontFamily: 'var(--font-serif)',
+                          fontSize: '1.1rem',
+                          fontWeight: 700,
+                          color: 'var(--text-espresso)',
+                          margin: 0,
+                          lineHeight: 1.25
+                        }}
+                      >
+                        {item.name}
+                      </h3>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', flexShrink: 0, marginTop: '2px' }}>
+                        <Star size={15} color="#EAB308" fill="#EAB308" />
+                        <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-espresso)' }}>
+                          4.9
+                        </span>
+                      </div>
+                    </div>
 
+                    {/* Subtitle / Notes text */}
+                    <p style={{ fontSize: '0.775rem', color: '#7A6F68', margin: '0 0 1rem 0', lineHeight: 1.4 }}>
+                      {item.notes || (item.type === 'ATTAR' ? 'Pure Attar Oil' : item.type === 'GIFT SET' ? 'Luxury Gift Set' : 'Inspired Fragrance Profile')}
+                    </p>
+                  </div>
+
+                  {/* WhatsApp Order Button */}
                   <button
-                    onClick={() => onSelectFragrance(item)}
-                    className="btn-secondary"
-                    style={{ width: '100%', fontSize: '0.75rem', padding: '0.65rem 1rem' }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const text = encodeURIComponent(
+                        `Hi The Perfume Corner! I would like to order/inquire about "${item.name}". Please share availability & details.`
+                      );
+                      window.open(`https://wa.me/919619113993?text=${text}`, '_blank', 'noopener,noreferrer');
+                    }}
+                    style={{
+                      width: '100%',
+                      padding: '0.6rem 0.85rem',
+                      fontSize: '0.8rem',
+                      fontWeight: 700,
+                      backgroundColor: '#25D366',
+                      color: '#FFFFFF',
+                      border: 'none',
+                      borderRadius: '50px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justify: 'center',
+                      gap: '0.4rem',
+                      cursor: 'pointer',
+                      boxShadow: '0 4px 12px rgba(37, 211, 102, 0.35)',
+                      transition: 'all 0.25s ease',
+                      marginTop: '0.5rem'
+                    }}
+                    className="btn-whatsapp-order"
                   >
-                    View Fragrance
+                    <MessageCircle size={16} color="#FFFFFF" />
+                    <span>Order on WhatsApp</span>
                   </button>
                 </div>
               </div>
@@ -390,7 +454,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               className="btn-gold"
               style={{ padding: '1rem 2.5rem', fontSize: '0.9rem' }}
             >
-              <span>VIEW FULL CATALOGUE ({FRAGRANCES.length} FRAGRANCES)</span>
+              <span>VIEW FULL CATALOGUE</span>
               <ArrowRight size={18} />
             </button>
           </div>
@@ -400,7 +464,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
       {/* WHY CHOOSE US */}
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-warm-beige)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto 3rem auto' }}>
+          <div style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto 3rem auto' }} className="section-header-wrap">
             <span style={{ fontSize: '0.8rem', letterSpacing: '0.2em', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase' }}>
               OUR COMMITMENT
             </span>
@@ -409,129 +473,159 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem' }}>
+          <div className="why-choose-grid">
             {/* Block 1 */}
-            <div style={{ padding: '2rem', background: 'var(--bg-cream)', border: '1px solid var(--accent-gold-border)', borderRadius: '4px' }}>
-              <div style={{ fontSize: '1.8rem', color: 'var(--accent-gold)', fontFamily: 'var(--font-serif)', fontWeight: 700, marginBottom: '0.5rem' }}>
-                01
-              </div>
-              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', color: 'var(--text-espresso)' }}>
-                AUTHENTIC ATTAR EXPERIENCE
-              </h3>
-              <p style={{ fontSize: '0.875rem', color: 'var(--text-espresso-muted)', lineHeight: 1.6 }}>
-                Traditional fragrance experience with modern presentation and deep long-lasting oils.
+            <div className="why-choose-card">
+              <div className="why-number">01</div>
+              <h3 className="why-title">100% PURE ATTAR</h3>
+              <p className="why-desc">
+                Alcohol-free, long-lasting concentrated oils.
               </p>
             </div>
 
             {/* Block 2 */}
-            <div style={{ padding: '2rem', background: 'var(--bg-cream)', border: '1px solid var(--accent-gold-border)', borderRadius: '4px' }}>
-              <div style={{ fontSize: '1.8rem', color: 'var(--accent-gold)', fontFamily: 'var(--font-serif)', fontWeight: 700, marginBottom: '0.5rem' }}>
-                02
-              </div>
-              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', color: 'var(--text-espresso)' }}>
-                INSPIRED BY ICONIC FRAGRANCES
-              </h3>
-              <p style={{ fontSize: '0.875rem', color: 'var(--text-espresso-muted)', lineHeight: 1.6 }}>
-                Explore scent profiles inspired by well-known fragrance styles for everyday signature wear.
+            <div className="why-choose-card">
+              <div className="why-number">02</div>
+              <h3 className="why-title">INSPIRED PROFILES</h3>
+              <p className="why-desc">
+                Designer-inspired luxury scent profiles.
               </p>
             </div>
 
             {/* Block 3 */}
-            <div style={{ padding: '2rem', background: 'var(--bg-cream)', border: '1px solid var(--accent-gold-border)', borderRadius: '4px' }}>
-              <div style={{ fontSize: '1.8rem', color: 'var(--accent-gold)', fontFamily: 'var(--font-serif)', fontWeight: 700, marginBottom: '0.5rem' }}>
-                03
-              </div>
-              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', color: 'var(--text-espresso)' }}>
-                PERSONALIZED GUIDANCE
-              </h3>
-              <p style={{ fontSize: '0.875rem', color: 'var(--text-espresso-muted)', lineHeight: 1.6 }}>
-                We help you choose a fragrance according to your personal taste and occasion preference.
+            <div className="why-choose-card">
+              <div className="why-number">03</div>
+              <h3 className="why-title">SCENT CONSULTATION</h3>
+              <p className="why-desc">
+                Personalized fragrance advice & selection.
               </p>
             </div>
 
             {/* Block 4 */}
-            <div style={{ padding: '2rem', background: 'var(--bg-cream)', border: '1px solid var(--accent-gold-border)', borderRadius: '4px' }}>
-              <div style={{ fontSize: '1.8rem', color: 'var(--accent-gold)', fontFamily: 'var(--font-serif)', fontWeight: 700, marginBottom: '0.5rem' }}>
-                04
-              </div>
-              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', color: 'var(--text-espresso)' }}>
-                LOCAL & ACCESSIBLE
-              </h3>
-              <p style={{ fontSize: '0.875rem', color: 'var(--text-espresso-muted)', lineHeight: 1.6 }}>
-                Conveniently located in Malad East, Mumbai near Rani Sati Marg for local fragrance lovers.
+            <div className="why-choose-card">
+              <div className="why-number">04</div>
+              <h3 className="why-title">MALAD BOUTIQUE</h3>
+              <p className="why-desc">
+                Visit store at Rani Sati Marg, Malad East.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* HOME — CTA SECTION */}
+      {/* HOME — CTA / EXPLORE SECTION */}
       <section
         style={{
           backgroundColor: 'var(--accent-dark-brown)',
           color: '#FFF9F0',
-          padding: '5rem 0',
           borderTop: '2px solid var(--accent-gold)',
           textAlign: 'center'
         }}
+        className="home-cta-section"
       >
         <div className="container" style={{ maxWidth: '750px' }}>
-          <Sparkles size={28} color="var(--accent-gold)" style={{ marginBottom: '1rem' }} />
+          <Sparkles size={32} color="var(--accent-gold)" style={{ marginBottom: '1.25rem' }} />
+
+          <span
+            style={{
+              fontSize: '0.75rem',
+              letterSpacing: '0.25em',
+              color: 'var(--accent-gold-light)',
+              textTransform: 'uppercase',
+              fontWeight: 700,
+              display: 'block',
+              marginBottom: '0.75rem'
+            }}
+          >
+            LUXURY FRAGRANCE BOUTIQUE
+          </span>
+
           <h2
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.2rem, 4vw, 3.2rem)',
+              fontSize: 'clamp(2.2rem, 4vw, 3.4rem)',
               color: '#FFF9F0',
-              marginBottom: '1rem'
+              marginBottom: '1rem',
+              letterSpacing: '0.02em',
+              fontWeight: 700
             }}
           >
-            Find Your Signature Fragrance
+            DISCOVER YOUR SIGNATURE SCENT
           </h2>
+
           <p
             style={{
-              fontSize: '1.1rem',
+              fontSize: '1.05rem',
               color: 'rgba(255, 249, 240, 0.85)',
               lineHeight: 1.7,
-              marginBottom: '2.5rem'
+              marginBottom: '2.5rem',
+              maxWidth: '650px',
+              margin: '0 auto 2.5rem auto'
             }}
           >
-            Tell us the fragrance style you love. We'll help you explore the closest inspired fragrance profile from our collection.
+            Explore artisanal attars and inspired fragrance oils crafted for character, depth and daily signature wear.
           </p>
 
           <div style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a
-              href="tel:9619113993"
+            <button
+              onClick={() => { setCurrentPage('catalogue'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="btn-gold"
-              style={{ padding: '1rem 2rem' }}
+              style={{ padding: '1rem 2.2rem', fontSize: '0.85rem' }}
             >
-              <Phone size={18} />
-              <span>CALL NOW: 9619113993</span>
-            </a>
+              <span>EXPLORE COLLECTION</span>
+              <ArrowRight size={18} />
+            </button>
 
-            <a
-              href="https://wa.me/919619113993?text=Hi%20The%20Perfume%20Corner,%20I%20am%20looking%20for%20a%20fragrance%20recommendation."
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => { setCurrentPage('about-contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="btn-secondary"
-              style={{ color: '#FFF9F0', borderColor: 'var(--accent-gold)' }}
+              style={{ color: '#FFF9F0', borderColor: 'var(--accent-gold)', padding: '1rem 2.2rem', fontSize: '0.85rem' }}
             >
-              <MessageCircle size={18} color="#25D366" />
-              <span>WHATSAPP US</span>
-            </a>
+              <span>VISIT OUR STORE</span>
+            </button>
           </div>
 
-          <div style={{ marginTop: '2rem', fontSize: '0.85rem', color: 'var(--accent-gold-light)' }}>
-            Alternative Line: 8424955955 &bull; Visit us at Rani Sati Marg, Malad East
+          <div style={{ marginTop: '2.5rem', fontSize: '0.85rem', color: 'var(--accent-gold-light)', letterSpacing: '0.05em' }}>
+            Rani Sati Marg, Malad East, Mumbai
           </div>
         </div>
       </section>
 
       {/* Card Hover Inline Styling */}
       <style>{`
+        .home-hero-section {
+          min-height: 85vh;
+        }
+        .home-trust-section {
+          padding: 3.5rem 0;
+        }
+        .home-cta-section {
+          padding: 5rem 0;
+        }
+
+        @media (max-width: 640px) {
+          .home-hero-section {
+            min-height: 60vh !important;
+          }
+          .hero-animated-content {
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+          }
+          .home-trust-section {
+            padding: 1.5rem 0 !important;
+          }
+          .home-cta-section {
+            padding: 2.25rem 0 !important;
+          }
+          .section-header-wrap {
+            margin-bottom: 1.5rem !important;
+          }
+        }
+
         .curated-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 1.75rem;
+          gap: 1.5rem;
           margin-bottom: 3rem;
         }
         @media (max-width: 1024px) {
@@ -543,33 +637,15 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
         @media (max-width: 640px) {
           .curated-grid {
             grid-template-columns: repeat(2, 1fr) !important;
-            gap: 0.75rem !important;
-            margin-bottom: 2rem !important;
+            gap: 0.85rem !important;
+            margin-bottom: 1.5rem !important;
           }
-          .curated-grid .perfume-card-img-wrap {
-            padding: 0.75rem !important;
-          }
-          .curated-grid .card-img {
-            height: 130px !important;
-          }
-          .curated-grid .perfume-card-body {
-            padding: 0.75rem !important;
-          }
-          .curated-grid .perfume-card-body h3 {
+          .curated-grid .catalogue-card h3 {
             font-size: 0.95rem !important;
-            margin-bottom: 0.25rem !important;
           }
-          .curated-grid .perfume-card-body p {
-            font-size: 0.725rem !important;
-            margin-bottom: 0.75rem !important;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-          .curated-grid .btn-secondary {
-            padding: 0.5rem 0.5rem !important;
-            font-size: 0.675rem !important;
+          .curated-grid .btn-whatsapp-order {
+            padding: 0.5rem 0.75rem !important;
+            font-size: 0.75rem !important;
           }
         }
         @media (max-width: 768px) {
@@ -577,13 +653,267 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             grid-template-columns: 1fr !important;
           }
         }
-        .perfume-card:hover {
-          transform: translateY(-6px);
-          border-color: var(--accent-gold) !important;
-          box-shadow: var(--shadow-gold) !important;
+        /* Trust Strip 2x2 Grid & 4 Circle Cards Animations */
+        .trust-2x2-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.75rem;
+          max-width: 720px;
+          margin: 0 auto;
         }
-        .perfume-card:hover .card-img {
-          transform: scale(1.06);
+        .trust-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 1.5rem 1rem;
+          background: rgba(255, 249, 240, 0.85);
+          border: 1px solid var(--accent-gold-border);
+          border-radius: 16px;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          position: relative;
+          overflow: hidden;
+        }
+        .trust-card:hover {
+          transform: translateY(-8px);
+          border-color: var(--accent-gold);
+          box-shadow: 0 14px 30px rgba(43, 33, 27, 0.12);
+          background: #FFFFFF;
+        }
+        .trust-icon-badge {
+          position: relative;
+          width: 58px;
+          height: 58px;
+          border-radius: 50%;
+          border: 2px solid var(--accent-gold);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
+          background-color: var(--bg-warm-beige);
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          animation: circleFloat 3s ease-in-out infinite;
+          box-shadow: 0 4px 15px rgba(212, 175, 55, 0.18);
+        }
+        .trust-card:nth-child(1) .trust-icon-badge { animation-delay: 0s; }
+        .trust-card:nth-child(2) .trust-icon-badge { animation-delay: 0.5s; }
+        .trust-card:nth-child(3) .trust-icon-badge { animation-delay: 1s; }
+        .trust-card:nth-child(4) .trust-icon-badge { animation-delay: 1.5s; }
+
+        /* Expanding Ripple Pulse Aura for 4 Circle Cards */
+        .trust-icon-badge::before {
+          content: '';
+          position: absolute;
+          inset: -6px;
+          border-radius: 50%;
+          border: 2px solid var(--accent-gold);
+          opacity: 0;
+          animation: ripplePulse 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        .trust-card:nth-child(1) .trust-icon-badge::before { animation-delay: 0s; }
+        .trust-card:nth-child(2) .trust-icon-badge::before { animation-delay: 0.6s; }
+        .trust-card:nth-child(3) .trust-icon-badge::before { animation-delay: 1.2s; }
+        .trust-card:nth-child(4) .trust-icon-badge::before { animation-delay: 1.8s; }
+
+        .trust-card:hover .trust-icon-badge {
+          background-color: var(--accent-dark-brown);
+          transform: scale(1.18) rotate(10deg);
+          border-color: var(--accent-gold-light);
+          box-shadow: 0 0 22px rgba(212, 175, 55, 0.5);
+        }
+        .trust-card:hover .trust-icon-badge svg {
+          stroke: var(--accent-gold-light);
+          transform: scale(1.15);
+          transition: transform 0.3s ease;
+        }
+
+        @keyframes circleFloat {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+
+        @keyframes ripplePulse {
+          0% {
+            transform: scale(0.9);
+            opacity: 0.85;
+          }
+          100% {
+            transform: scale(1.4);
+            opacity: 0;
+          }
+        }
+
+        /* Hero Dynamic Slide Text Animations (Bottom to Up) */
+        .hero-animated-content .hero-slide-badge {
+          animation: slideUpBottom 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .hero-animated-content .hero-slide-title {
+          animation: slideUpBottom 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+        }
+        .hero-animated-content .hero-slide-italic {
+          animation: slideUpBottom 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.14s both;
+        }
+        .hero-animated-content .hero-slide-desc {
+          animation: slideUpBottom 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+        }
+        .hero-animated-content .hero-slide-buttons {
+          animation: slideUpBottom 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+        }
+
+        @keyframes slideUpBottom {
+          0% {
+            opacity: 0;
+            transform: translateY(45px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Why Choose Us 4 Cards Section */
+        .why-choose-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+        }
+        .why-choose-card {
+          position: relative;
+          padding: 1.75rem 1.25rem;
+          background: var(--bg-cream);
+          border: 1px solid var(--accent-gold-border);
+          border-radius: 12px;
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          box-shadow: 0 4px 14px rgba(43, 33, 27, 0.04);
+          animation: whySlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+          overflow: hidden;
+        }
+        .why-choose-card:nth-child(1) { animation-delay: 0.1s; }
+        .why-choose-card:nth-child(2) { animation-delay: 0.25s; }
+        .why-choose-card:nth-child(3) { animation-delay: 0.4s; }
+        .why-choose-card:nth-child(4) { animation-delay: 0.55s; }
+
+        /* Top Glowing Gold Accent Line on Hover */
+        .why-choose-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 3.5px;
+          background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light), var(--accent-gold));
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .why-choose-card:hover {
+          transform: translateY(-10px) scale(1.02);
+          border-color: var(--accent-gold);
+          box-shadow: 0 16px 32px rgba(181, 138, 69, 0.2);
+          background: #FFFFFF;
+        }
+
+        .why-choose-card:hover::before {
+          transform: scaleX(1);
+        }
+
+        .why-number {
+          font-size: 1.9rem;
+          color: var(--accent-gold);
+          font-family: var(--font-serif);
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+          transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+          display: inline-block;
+        }
+
+        .why-choose-card:hover .why-number {
+          transform: scale(1.25) translateX(3px);
+          color: #B58A45;
+          text-shadow: 0 0 12px rgba(181, 138, 69, 0.4);
+        }
+
+        .why-title {
+          font-size: 1rem;
+          margin-bottom: 0.75rem;
+          color: var(--text-espresso);
+          font-family: var(--font-sans);
+          font-weight: 700;
+          line-height: 1.3;
+          transition: color 0.3s ease;
+        }
+
+        .why-choose-card:hover .why-title {
+          color: var(--accent-dark-brown);
+        }
+
+        .why-desc {
+          font-size: 0.825rem;
+          color: var(--text-espresso-muted);
+          line-height: 1.55;
+          transition: color 0.3s ease;
+        }
+
+        .why-choose-card:hover .why-desc {
+          color: var(--text-espresso);
+        }
+
+        @keyframes whySlideUp {
+          0% {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @media (max-width: 1024px) {
+          .why-choose-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+          }
+        }
+        @media (max-width: 640px) {
+          .why-choose-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.85rem !important;
+          }
+          .why-choose-card {
+            padding: 1.15rem 0.85rem !important;
+            border-radius: 10px !important;
+          }
+          .why-number {
+            font-size: 1.4rem !important;
+            margin-bottom: 0.3rem !important;
+          }
+          .why-title {
+            font-size: 0.85rem !important;
+            margin-bottom: 0.4rem !important;
+          }
+          .why-desc {
+            font-size: 0.75rem !important;
+            line-height: 1.4 !important;
+          }
+        }
+
+        .catalogue-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 12px 28px rgba(43, 33, 27, 0.12) !important;
+          border-color: #D6CBBF !important;
+        }
+        .catalogue-card:hover .cat-card-img {
+          transform: scale(1.08);
+        }
+        .btn-whatsapp-order:hover {
+          transform: scale(1.03);
+          box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5) !important;
         }
       `}</style>
     </div>
