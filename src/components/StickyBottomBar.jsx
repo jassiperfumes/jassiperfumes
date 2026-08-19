@@ -15,7 +15,9 @@ export default function StickyBottomBar() {
         aria-label="Call Us 96191 13993"
         title="Call Us: 96191 13993"
       >
-        <Phone size={24} color="#FFF9F0" />
+        <span className="floating-btn-icon">
+          <Phone size={24} color="#FFF9F0" />
+        </span>
         <span className="floating-btn-tooltip">Call 96191 13993</span>
       </a>
 
@@ -28,7 +30,9 @@ export default function StickyBottomBar() {
         aria-label="WhatsApp 96191 13993"
         title="Chat on WhatsApp: 96191 13993"
       >
-        <MessageCircle size={26} color="#FFFFFF" />
+        <span className="floating-btn-icon">
+          <MessageCircle size={26} color="#FFFFFF" />
+        </span>
         <span className="floating-btn-tooltip tooltip-right">WhatsApp 96191 13993</span>
       </a>
 
@@ -49,15 +53,32 @@ export default function StickyBottomBar() {
           cursor: pointer;
         }
 
+        /* Pulsing Radiating Outer Ring */
+        .floating-btn::before {
+          content: '';
+          position: absolute;
+          top: -4px;
+          left: -4px;
+          right: -4px;
+          bottom: -4px;
+          border-radius: 50%;
+          z-index: -1;
+          animation: pulse-ring 2.2s infinite ease-out;
+        }
+
         .floating-call-btn {
           left: 24px;
           background: linear-gradient(135deg, #2B211B 0%, #4A3528 100%);
           border: 2px solid #C5A059;
         }
 
+        .floating-call-btn::before {
+          border: 2px solid rgba(197, 160, 89, 0.7);
+        }
+
         .floating-call-btn:hover {
           transform: scale(1.12);
-          box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
+          box-shadow: 0 8px 25px rgba(197, 160, 89, 0.6);
         }
 
         .floating-wa-btn {
@@ -66,9 +87,58 @@ export default function StickyBottomBar() {
           border: 2px solid #FFFFFF;
         }
 
+        .floating-wa-btn::before {
+          border: 2px solid rgba(37, 211, 102, 0.7);
+        }
+
         .floating-wa-btn:hover {
           transform: scale(1.12);
-          box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+          box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Icon Animation wrapper */
+        .floating-btn-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .floating-call-btn .floating-btn-icon {
+          animation: call-shake 3.8s infinite ease-in-out;
+        }
+
+        .floating-wa-btn .floating-btn-icon {
+          animation: wa-bounce 3.8s infinite ease-in-out;
+        }
+
+        @keyframes pulse-ring {
+          0% {
+            transform: scale(0.95);
+            opacity: 0.9;
+          }
+          50% {
+            transform: scale(1.35);
+            opacity: 0.4;
+          }
+          100% {
+            transform: scale(1.6);
+            opacity: 0;
+          }
+        }
+
+        @keyframes call-shake {
+          0%, 80%, 100% { transform: rotate(0deg); }
+          84% { transform: rotate(16deg); }
+          88% { transform: rotate(-14deg); }
+          92% { transform: rotate(12deg); }
+          96% { transform: rotate(-8deg); }
+        }
+
+        @keyframes wa-bounce {
+          0%, 80%, 100% { transform: translateY(0); }
+          85% { transform: translateY(-5px) scale(1.08); }
+          90% { transform: translateY(2px); }
+          95% { transform: translateY(-2px); }
         }
 
         .floating-btn-tooltip {
