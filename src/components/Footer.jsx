@@ -32,7 +32,7 @@ export default function Footer({ setCurrentPage }) {
                 margin: '0 0 0.35rem 0'
               }}
             >
-              THE PERFUME CORNER
+              JASSI PERFUME
             </h3>
             <p style={{ fontSize: '0.8rem', color: 'rgba(255, 249, 240, 0.75)', lineHeight: 1.5, margin: 0 }}>
               Pure concentrated attars & signature inspired fragrance profiles in Malad East, Mumbai.
@@ -111,7 +111,7 @@ export default function Footer({ setCurrentPage }) {
             color: 'rgba(255, 249, 240, 0.5)'
           }}
         >
-          <div>&copy; 2026 The Perfume Corner. All Rights Reserved.</div>
+          <div>&copy; 2026 Jassi Perfume. All Rights Reserved.</div>
           <div>* Scent names used solely for fragrance profile identification.</div>
         </div>
       </div>

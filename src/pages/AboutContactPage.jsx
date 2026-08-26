@@ -4,7 +4,7 @@ import { Phone, MessageCircle, Navigation, MapPin, Clock } from 'lucide-react';
 export default function AboutContactPage() {
   const mapEmbedUrl = "https://maps.google.com/maps?q=19.183601,72.851187&hl=en&z=17&output=embed";
   const directMapUrl = "https://www.google.com/maps/search/?api=1&query=19.183601,72.851187";
-  const whatsappUrl = "https://wa.me/919619113993?text=Hi%20The%20Perfume%20Corner,%20I%20would%20like%20to%20visit%20your%20store%20in%20Malad%20East.";
+  const whatsappUrl = "https://wa.me/919619113993?text=Hi%20Jassi%20Perfume,%20I%20would%20like%20to%20visit%20your%20store%20in%20Malad%20East.";
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -148,7 +148,7 @@ export default function AboutContactPage() {
                 }}
               >
                 <iframe
-                  title="The Perfume Corner Location Map"
+                  title="Jassi Perfume Location Map"
                   src={mapEmbedUrl}
                   width="100%"
                   height="100%"

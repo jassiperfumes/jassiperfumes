@@ -8,7 +8,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
   const heroSlides = [
     {
       image: '/assets/hero_slide_1.png',
-      badge: 'THE PERFUME CORNER',
+      badge: 'JASSI PERFUME',
       title: 'THE ART OF FRAGRANCE',
       italic: 'Pure Concentrated Perfume Oils & Artisanal Blends',
       description: 'Discover elegant fragrance profiles inspired by iconic perfumes and crafted for your everyday signature.'
@@ -67,7 +67,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           >
             <img
               src={slide.image}
-              alt="The Perfume Corner Hero Visual"
+              alt="Jassi Perfume Hero Visual"
               style={{
                 width: '100%',
                 height: '100%',
@@ -291,7 +291,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             {/* Right Text */}
             <div>
               <div style={{ fontSize: '0.8rem', letterSpacing: '0.2em', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                ABOUT THE PERFUME CORNER
+                ABOUT JASSI PERFUME
               </div>
               <h2
                 style={{
@@ -305,7 +305,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                 Where Fragrance Meets Tradition
               </h2>
               <p style={{ fontSize: '0.975rem', lineHeight: 1.8, color: 'var(--text-espresso-muted)', marginBottom: '1rem' }}>
-                The Perfume Corner is your local fragrance boutique in Malad East, Mumbai, specializing in concentrated attars and inspired fragrance profiles. We believe fragrance is more than a scent — it is part of your personal identity.
+                Jassi Perfume is your local fragrance boutique in Malad East, Mumbai, specializing in concentrated attars and inspired fragrance profiles. We believe fragrance is more than a scent — it is part of your personal identity.
               </p>
               <p style={{ fontSize: '0.975rem', lineHeight: 1.8, color: 'var(--text-espresso-muted)', marginBottom: '1.5rem' }}>
                 Whether you prefer fresh, woody, floral, sweet, oriental or rich oud-based scents, our collection brings together timeless traditions and modern scent preferences.
@@ -365,7 +365,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               EXPLORE OUR FRAGRANCE COLLECTION
             </h2>
             <p style={{ fontSize: '0.95rem', color: 'var(--text-espresso-muted)' }}>
-              Popular fragrance profiles available at The Perfume Corner.
+              Popular fragrance profiles available at Jassi Perfume.
             </p>
           </div>
 
@@ -444,7 +444,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                     onClick={(e) => {
                       e.stopPropagation();
                       const text = encodeURIComponent(
-                        `Hi The Perfume Corner! I would like to order/inquire about "${item.name}". Please share availability & details.`
+                        `Hi Jassi Perfume! I would like to order/inquire about "${item.name}". Please share availability & details.`
                       );
                       window.open(`https://wa.me/919619113993?text=${text}`, '_blank', 'noopener,noreferrer');
                     }}
@@ -497,7 +497,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               OUR COMMITMENT
             </span>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.4rem', marginTop: '0.5rem' }}>
-              Why Choose The Perfume Corner
+              Why Choose Jassi Perfume
             </h2>
           </div>
 

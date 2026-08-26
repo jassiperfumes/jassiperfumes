@@ -4,7 +4,7 @@ import { Phone, MessageCircle } from 'lucide-react';
 export default function StickyBottomBar() {
   const phoneNumber = "9619113993";
   const callUrl = `tel:${phoneNumber}`;
-  const whatsappUrl = `https://wa.me/91${phoneNumber}?text=Hi%20The%20Perfume%20Corner,%20I%20would%20like%20to%20inquire%20about%20your%20fragrances.`;
+  const whatsappUrl = `https://wa.me/91${phoneNumber}?text=Hi%20Jassi%20Perfume,%20I%20would%20like%20to%20inquire%20about%20your%20fragrances.`;
 
   return (
     <>

@@ -83,7 +83,7 @@ export default function Header({ currentPage, setCurrentPage }) {
               lineHeight: 1.1
             }}
           >
-            THE PERFUME CORNER
+            JASSI PERFUME
           </span>
           <span
             style={{
