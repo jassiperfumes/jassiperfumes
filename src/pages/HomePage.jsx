@@ -36,7 +36,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
     return () => clearInterval(interval);
   }, []);
 
-  const featuredFragrances = FRAGRANCES.filter((item) => item.isFeatured).slice(0, 8);
+  const featuredFragrances = FRAGRANCES.filter((item) => item.isFeatured).slice(0, 4);
 
   return (
     <div className="animate-fade-in">
@@ -205,7 +205,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
         </div>
       </section>
 
-      {/* TRUST STRIP (2x2 Grid with Animations) */}
+      {/* TRUST STRIP (Horizontal 4-Card Grid with Animations) */}
       <section
         style={{
           backgroundColor: 'var(--bg-cream)',
@@ -369,7 +369,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             </p>
           </div>
 
-          {/* 8 Featured Fragrance Grid */}
+          {/* 4 Featured Fragrance Grid */}
           <div className="curated-grid">
             {featuredFragrances.map((item) => (
               <div
@@ -681,13 +681,26 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             grid-template-columns: 1fr !important;
           }
         }
-        /* Trust Strip 2x2 Grid & 4 Circle Cards Animations */
+        /* Trust Strip Horizontal Grid & 4 Circle Cards Animations */
         .trust-2x2-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1.75rem;
-          max-width: 720px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+          max-width: 1200px;
           margin: 0 auto;
+        }
+        @media (max-width: 992px) {
+          .trust-2x2-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            max-width: 720px;
+          }
+        }
+        @media (max-width: 576px) {
+          .trust-2x2-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.85rem;
+          }
         }
         .trust-card {
           display: flex;
