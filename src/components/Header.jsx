@@ -63,7 +63,7 @@ export default function Header({ currentPage, setCurrentPage }) {
         }}
       >
         <Sparkles size={12} color="var(--accent-gold)" />
-        <span>PREMIUM ATTAR & INSPIRED FRAGRANCE BOUTIQUE &bull; MALAD EAST, MUMBAI</span>
+        <span>100% NON-ALCOHOLIC PURE ATTARS &bull; INSPIRED FRAGRANCE VERSIONS &bull; MALAD EAST, MUMBAI</span>
         <Sparkles size={12} color="var(--accent-gold)" />
       </div>
 

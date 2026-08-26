@@ -8,24 +8,24 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
   const heroSlides = [
     {
       image: '/assets/hero_slide_1.png',
-      badge: 'JASSI PERFUME',
+      badge: '100% NON-ALCOHOLIC & INSPIRED',
       title: 'THE ART OF FRAGRANCE',
-      italic: 'Pure Concentrated Perfume Oils & Artisanal Blends',
-      description: 'Discover elegant fragrance profiles inspired by iconic perfumes and crafted for your everyday signature.'
+      italic: '100% Non-Alcoholic Pure Attars & Inspired Fragrance Profiles',
+      description: 'Discover elegant fragrance profiles inspired by iconic perfumes, crafted with 100% non-alcoholic pure oils for your everyday signature.'
     },
     {
       image: '/assets/hero_slide_2.png',
-      badge: 'TRADITIONAL ATTARS',
+      badge: '100% PURE NON-ALCOHOLIC ATTARS',
       title: 'TIMELESS ESSENCE',
-      italic: 'Hand-Poured Oils Crafted for Depth & Character',
-      description: 'Experience rich, alcohol-free fragrance oils tailored for long-lasting sophistication.'
+      italic: 'Hand-Poured 100% Alcohol-Free Oils Crafted for Depth & Character',
+      description: 'Experience rich, 100% non-alcoholic pure fragrance oils tailored for long-lasting sophistication.'
     },
     {
       image: '/assets/hero_slide_3.png',
-      badge: 'INSPIRED COLLECTION',
+      badge: 'INSPIRED FRAGRANCE VERSIONS',
       title: 'SIGNATURE SCENTS',
-      italic: 'Iconic Inspired Fragrance Profiles for Modern Wear',
-      description: 'Explore affordable luxury inspired by world-renowned perfume creations.'
+      italic: 'Iconic Inspired Fragrance Versions for Modern Wear',
+      description: 'Explore affordable luxury with custom inspired perfume versions of world-renowned fragrance creations.'
     }
   ];
 
@@ -167,6 +167,67 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             {heroSlides[currentSlide].description}
           </p>
 
+          {/* Key Feature Badges Row */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+            <span
+              style={{
+                fontSize: '0.775rem',
+                fontWeight: 700,
+                letterSpacing: '0.05em',
+                color: '#FFF9F0',
+                backgroundColor: 'rgba(197, 160, 89, 0.25)',
+                border: '1px solid var(--accent-gold)',
+                padding: '0.35rem 0.9rem',
+                borderRadius: '50px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                backdropFilter: 'blur(4px)'
+              }}
+            >
+              <Droplet size={14} color="var(--accent-gold)" />
+              100% NON-ALCOHOLIC
+            </span>
+            <span
+              style={{
+                fontSize: '0.775rem',
+                fontWeight: 700,
+                letterSpacing: '0.05em',
+                color: '#FFF9F0',
+                backgroundColor: 'rgba(197, 160, 89, 0.25)',
+                border: '1px solid var(--accent-gold)',
+                padding: '0.35rem 0.9rem',
+                borderRadius: '50px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                backdropFilter: 'blur(4px)'
+              }}
+            >
+              <Sparkles size={14} color="var(--accent-gold)" />
+              INSPIRED VERSIONS
+            </span>
+            <span
+              style={{
+                fontSize: '0.775rem',
+                fontWeight: 700,
+                letterSpacing: '0.05em',
+                color: '#FFF9F0',
+                backgroundColor: 'rgba(197, 160, 89, 0.25)',
+                border: '1px solid var(--accent-gold)',
+                padding: '0.35rem 0.9rem',
+                borderRadius: '50px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                backdropFilter: 'blur(4px)'
+              }}
+            >
+              <CheckCircle2 size={14} color="var(--accent-gold)" />
+              LONG-LASTING OILS
+            </span>
+          </div>
+
           <div className="hero-slide-buttons" style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button
               onClick={() => { setCurrentPage('catalogue'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
@@ -186,7 +247,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           </div>
 
           {/* Slide Indicator Dots */}
-          <div style={{ display: 'flex', gap: '0.6rem', justifyContent: 'center', marginTop: '3rem' }}>
+          <div style={{ display: 'flex', gap: '0.6rem', justifyContent: 'center', marginTop: '2.5rem' }}>
             {heroSlides.map((_, idx) => (
               <button
                 key={idx}
@@ -205,6 +266,42 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
         </div>
       </section>
 
+      {/* HIGHLIGHTED KEY FEATURES RIBBON */}
+      <div
+        style={{
+          backgroundColor: '#1E1612',
+          borderTop: '2px solid var(--accent-gold)',
+          borderBottom: '2px solid var(--accent-gold)',
+          color: '#FFF9F0',
+          padding: '0.9rem 1rem'
+        }}
+      >
+        <div
+          className="container"
+          style={{
+            display: 'flex',
+            justify: 'space-around',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '1rem',
+            textAlign: 'center'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--accent-gold-light)' }}>
+            <Droplet size={18} color="var(--accent-gold)" />
+            <span>100% NON-ALCOHOLIC PURE ATTARS</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--accent-gold-light)' }}>
+            <Sparkles size={18} color="var(--accent-gold)" />
+            <span>INSPIRED FRAGRANCE VERSIONS</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--accent-gold-light)' }}>
+            <ShieldCheck size={18} color="var(--accent-gold)" />
+            <span>100% SKIN-SAFE & LONG-LASTING</span>
+          </div>
+        </div>
+      </div>
+
       {/* TRUST STRIP (Horizontal 4-Card Grid with Animations) */}
       <section
         style={{
@@ -221,10 +318,10 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                 <Droplet size={24} color="var(--accent-gold)" />
               </div>
               <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase', color: 'var(--text-espresso)', fontWeight: 700 }}>
-                PREMIUM ATTAR
+                100% NON-ALCOHOLIC
               </h4>
               <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)' }}>
-                Carefully selected fragrance oils
+                Pure concentrated fragrance oils & attars
               </p>
             </div>
 
@@ -234,10 +331,10 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                 <Sparkles size={24} color="var(--accent-gold)" />
               </div>
               <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase', color: 'var(--text-espresso)', fontWeight: 700 }}>
-                INSPIRED FRAGRANCES
+                INSPIRED VERSIONS
               </h4>
               <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)' }}>
-                Familiar and elegant scent profiles
+                Familiar & iconic perfume scent profiles
               </p>
             </div>
 
@@ -247,10 +344,10 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                 <Award size={24} color="var(--accent-gold)" />
               </div>
               <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase', color: 'var(--text-espresso)', fontWeight: 700 }}>
-                PERSONAL FRAGRANCE SERVICE
+                PERSONAL SERVICE
               </h4>
               <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)' }}>
-                Find a fragrance that suits you
+                Tailored fragrance consultation
               </p>
             </div>
 
