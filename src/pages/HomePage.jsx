@@ -551,18 +551,18 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
         }}
         className="home-cta-section"
       >
-        <div className="container" style={{ maxWidth: '750px' }}>
-          <Sparkles size={32} color="var(--accent-gold)" style={{ marginBottom: '1.25rem' }} />
+        <div className="container" style={{ maxWidth: '680px' }}>
+          <Sparkles size={24} color="var(--accent-gold)" style={{ marginBottom: '0.4rem' }} />
 
           <span
             style={{
-              fontSize: '0.75rem',
-              letterSpacing: '0.25em',
+              fontSize: '0.725rem',
+              letterSpacing: '0.2em',
               color: 'var(--accent-gold-light)',
               textTransform: 'uppercase',
               fontWeight: 700,
               display: 'block',
-              marginBottom: '0.75rem'
+              marginBottom: '0.35rem'
             }}
           >
             LUXURY FRAGRANCE BOUTIQUE
@@ -571,11 +571,12 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           <h2
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.2rem, 4vw, 3.4rem)',
+              fontSize: 'clamp(1.6rem, 3.2vw, 2.5rem)',
               color: '#FFF9F0',
-              marginBottom: '1rem',
+              marginBottom: '0.6rem',
               letterSpacing: '0.02em',
-              fontWeight: 700
+              fontWeight: 700,
+              lineHeight: 1.2
             }}
           >
             DISCOVER YOUR SIGNATURE SCENT
@@ -583,37 +584,37 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
 
           <p
             style={{
-              fontSize: '1.05rem',
+              fontSize: '0.9rem',
               color: 'rgba(255, 249, 240, 0.85)',
-              lineHeight: 1.7,
-              marginBottom: '2.5rem',
-              maxWidth: '650px',
-              margin: '0 auto 2.5rem auto'
+              lineHeight: 1.6,
+              marginBottom: '1.25rem',
+              maxWidth: '580px',
+              margin: '0 auto 1.25rem auto'
             }}
           >
             Explore artisanal attars and inspired fragrance oils crafted for character, depth and daily signature wear.
           </p>
 
-          <div style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="home-cta-btns">
             <button
               onClick={() => { setCurrentPage('catalogue'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="btn-gold"
-              style={{ padding: '1rem 2.2rem', fontSize: '0.85rem' }}
+              className="btn-gold home-cta-btn"
+              style={{ padding: '0.65rem 1.6rem', fontSize: '0.8rem' }}
             >
               <span>EXPLORE COLLECTION</span>
-              <ArrowRight size={18} />
+              <ArrowRight size={16} />
             </button>
 
             <button
               onClick={() => { setCurrentPage('about-contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="btn-secondary"
-              style={{ color: '#FFF9F0', borderColor: 'var(--accent-gold)', padding: '1rem 2.2rem', fontSize: '0.85rem' }}
+              className="btn-secondary home-cta-btn"
+              style={{ color: '#FFF9F0', borderColor: 'var(--accent-gold)', padding: '0.65rem 1.6rem', fontSize: '0.8rem' }}
             >
               <span>VISIT OUR STORE</span>
             </button>
           </div>
 
-          <div style={{ marginTop: '2.5rem', fontSize: '0.85rem', color: 'var(--accent-gold-light)', letterSpacing: '0.05em' }}>
+          <div style={{ marginTop: '0.85rem', fontSize: '0.775rem', color: 'var(--accent-gold-light)', letterSpacing: '0.05em' }}>
             Rani Sati Marg, Malad East, Mumbai
           </div>
         </div>
@@ -628,7 +629,14 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           padding: 3.5rem 0;
         }
         .home-cta-section {
-          padding: 5rem 0;
+          padding: 2.25rem 1rem;
+        }
+        .home-cta-btns {
+          display: flex;
+          gap: 0.85rem;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
         }
 
         @media (max-width: 640px) {
@@ -643,7 +651,19 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             padding: 1.5rem 0 !important;
           }
           .home-cta-section {
-            padding: 2.25rem 0 !important;
+            padding: 1.5rem 0.75rem !important;
+          }
+          .home-cta-btns {
+            flex-direction: column;
+            gap: 0.6rem;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+          }
+          .home-cta-btn {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 0.6rem 1.25rem !important;
           }
           .section-header-wrap {
             margin-bottom: 1.5rem !important;
