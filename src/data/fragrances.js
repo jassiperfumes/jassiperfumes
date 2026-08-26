@@ -431,6 +431,28 @@ export const FRAGRANCES = [
     description: "A regal deep purple glass spray bottle with a matching gold-trimmed purple gift box, perfect for special occasions.",
     image: "/assets/perfumes/WhatsApp Image 2026-08-18 at 12.39.45 PM.jpeg",
     isFeatured: false
+  },
+  {
+    id: 43,
+    name: "METALLIC MAGENTA TRAVEL POUCH SET",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    subtitle: "5-COMPARTMENT TRAVEL POUCH",
+    notes: "Custom Travel Roll Case for Perfumes & Attar Vials",
+    description: "A luxurious 5-compartment metallic magenta travel roll pouch designed to securely carry your favorite perfume bottles and attar vials on the go.",
+    image: "/assets/perfumes/WhatsApp Image 2026-08-26 at 11.44.56 AM (1).jpeg",
+    isFeatured: true
+  },
+  {
+    id: 44,
+    name: "ISHOM AMBER OUDH & SON CHAFA INCENSE BRICKS",
+    category: "GIFT ITEMS",
+    type: "INCENSE & OUDH",
+    subtitle: "PREMIUM SMUDGE INCENSE BRICKS",
+    notes: "Rich Amber Oudh & Exotic Son Chafa Floral Aromas",
+    description: "Premium handcrafted smudge incense bricks infused with rich Amber Oudh and sweet Son Chafa floral essence for a serene, uplifting aromatic ambience.",
+    image: "/assets/perfumes/WhatsApp Image 2026-08-26 at 11.44.56 AM.jpeg",
+    isFeatured: true
   }
 ];
 
