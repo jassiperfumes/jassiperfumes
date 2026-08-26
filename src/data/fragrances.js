@@ -299,6 +299,138 @@ export const FRAGRANCES = [
     description: "A grand, celestial fragrance profile capturing the majesty of the starry cosmos.",
     image: "/assets/perfumes/WhatsApp Image 2026-08-22 at 9.26.40 AM.jpeg",
     isFeatured: false
+  },
+  {
+    id: 31,
+    name: "ROYAL ATTAR BOTTLE SET",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    subtitle: "LUXURY 6-PIECE ATTAR COLLECTION",
+    notes: "Assorted Floral, Woody & Oriental Concentrated Attars",
+    description: "An exquisite royal collection box featuring 6 mini ornamental golden attar bottles filled with premium concentrated fragrance oils.",
+    image: "/assets/perfumes/Attar set_1.JPG",
+    isFeatured: true
+  },
+  {
+    id: 32,
+    name: "LUXURY ATTAR HAMPER CHEST",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    subtitle: "PREMIUM 10-PIECE HAMPER COLLECTION",
+    notes: "Rose, Jasmine, Sandal, Lavender, Lemon, Ocean & Raat Rani",
+    description: "A luxury 10-piece hamper collection in a handcrafted golden chest, showcasing a wide variety of signature floral and woody attar scents.",
+    image: "/assets/perfumes/Attar set_2.JPG",
+    isFeatured: false
+  },
+  {
+    id: 33,
+    name: "GOLD HENNA ATTAR GIFT BOX",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    subtitle: "ELEGANT 4-PIECE SPRAY & ATTAR SET",
+    notes: "Curated Seasonal Fragrance & Perfume Spray Profiles",
+    description: "A stunning black presentation gift box adorned with gold henna artwork, housing 4 sleek glass spray bottles.",
+    image: "/assets/perfumes/Attar set.JPG",
+    isFeatured: false
+  },
+  {
+    id: 34,
+    name: "VELVET TOUCH GIFT BOX",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    subtitle: "SINGLE BOTTLE LUXURY PRESENTATION",
+    notes: "Tailored Custom Perfume / Attar Presentation",
+    description: "A single-bottle premium presentation box featuring a textured pink exterior and smooth black satin lining.",
+    image: "/assets/perfumes/WhatsApp Image 2026-08-18 at 1.37.12 PM.jpeg",
+    isFeatured: false
+  },
+  {
+    id: 35,
+    name: "HENNA EMBOSSED GIFT BOX",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    subtitle: "CUSTOM GIFTING PRESENTATION BOX",
+    notes: "Gold Foil Traditional Henna Pattern Box",
+    description: "An elegant closed matte black gift box with gold foil traditional henna motifs, perfect for custom fragrance gifting.",
+    image: "/assets/perfumes/WhatsApp Image 2026-08-18 at 1.38.02 PM.jpeg",
+    isFeatured: false
+  },
+  {
+    id: 36,
+    name: "JEWEL COLLECTION SPRAY SET",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    subtitle: "4-PIECE METALLIC JEWEL SPRAY SET",
+    notes: "Vibrant Jewel Tone Metallic Perfume Sprays",
+    description: "A vivid 4-piece fragrance gift set showcasing sleek glass spray bottles in jewel-toned metallic hues (Purple, Smoke, Crimson, Cyan).",
+    image: "/assets/perfumes/WhatsApp Image 2026-08-18 at 1.38.03 PM.jpeg",
+    isFeatured: true
+  },
+  {
+    id: 37,
+    name: "PREMIUM CAR DIFFUSER",
+    category: "GIFT ITEMS",
+    type: "CAR DIFFUSER",
+    subtitle: "HANGING WOODEN CAR FRAGRANCE",
+    notes: "Long-lasting Aromatherapy Car Oils & Refreshers",
+    description: "A stylish hanging car fragrance diffuser bottle with a porous wooden diffusion cap and vibrant pink cord.",
+    image: "/assets/perfumes/WhatsApp Image 2026-08-18 at 12.39.43 PM (1).jpeg",
+    isFeatured: false
+  },
+  {
+    id: 38,
+    name: "CELESTIAL ATTAR BOTTLE COLLECTION",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    subtitle: "EXCLUSIVE 6-BOTTLE CELESTIAL SET",
+    notes: "Magical Swirl Golden Attar Bottle Presentation",
+    description: "An enchanting promo showcase of 6 floating ornamental attar bottles with magical golden glowing accents.",
+    image: "/assets/perfumes/WhatsApp Image 2026-08-18 at 12.39.43 PM.jpeg",
+    isFeatured: false
+  },
+  {
+    id: 39,
+    name: "DUO FABRIC PARFUM POCKET SPRAYS",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    subtitle: "2x8ML POCKET SPRAY GIFT SET",
+    notes: "Monarch & Roveen Fabric Parfum Blends",
+    description: "A compact 2-piece pocket spray gift set featuring 8ml Fabric Parfum bottles in a luxury burgundy slide box.",
+    image: "/assets/perfumes/WhatsApp Image 2026-08-18 at 12.39.44 PM (1).jpeg",
+    isFeatured: false
+  },
+  {
+    id: 40,
+    name: "EMPEROR ATTAR PRESENTATION SET",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    subtitle: "ROYAL 6-BOTTLE ATTAR PRESENTATION",
+    notes: "Intricately Embossed Gold Miniature Attar Bottles",
+    description: "A high-res presentation set featuring 6 intricately designed gold-embossed attar bottles resting in plush velvet.",
+    image: "/assets/perfumes/WhatsApp Image 2026-08-18 at 12.39.44 PM (2).jpeg",
+    isFeatured: false
+  },
+  {
+    id: 41,
+    name: "AZZARO MOST WANTED (35ML)",
+    category: "MEN",
+    type: "INSPIRED FRAGRANCES",
+    subtitle: "INSPIRED FRAGRANCE FROM ORIGINAL VERSION",
+    notes: "Cardamom, Caramel Accord & Smoked Amberwood",
+    description: "A striking heart-shaped blue metallic 35ml bottle profile with bold masculine aquatic and spiced woody notes.",
+    image: "/assets/perfumes/WhatsApp Image 2026-08-18 at 12.39.44 PM.jpeg",
+    isFeatured: false
+  },
+  {
+    id: 42,
+    name: "ROYAL PURPLE SINGLE BOTTLE GIFT EDITION",
+    category: "GIFT ITEMS",
+    type: "GIFT SET",
+    subtitle: "PREMIUM SINGLE BOTTLE GIFT SET",
+    notes: "Velvet Plum, Midnight Orchid & Warm Vanilla",
+    description: "A regal deep purple glass spray bottle with a matching gold-trimmed purple gift box, perfect for special occasions.",
+    image: "/assets/perfumes/WhatsApp Image 2026-08-18 at 12.39.45 PM.jpeg",
+    isFeatured: false
   }
 ];
 

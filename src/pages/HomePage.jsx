@@ -435,7 +435,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
 
                     {/* Subtitle text */}
                     <p style={{ fontSize: '0.725rem', color: '#7A6F68', margin: '0 0 1rem 0', lineHeight: 1.4, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.03em' }}>
-                      INSPIRED FRAGRANCE FROM ORIGINAL VERSION
+                      {item.subtitle || (item.category === 'GIFT ITEMS' || item.type === 'GIFT SET' ? 'PREMIUM GIFT ITEM' : 'INSPIRED FRAGRANCE FROM ORIGINAL VERSION')}
                     </p>
                   </div>
 

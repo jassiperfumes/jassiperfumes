@@ -86,7 +86,7 @@ export default function FragranceModal({ fragrance, onClose }) {
                   textTransform: 'uppercase'
                 }}
               >
-                INSPIRED FRAGRANCE FROM ORIGINAL VERSION
+                {fragrance.subtitle || (fragrance.category === 'GIFT ITEMS' || fragrance.type === 'GIFT SET' ? 'PREMIUM GIFT ITEM' : 'INSPIRED FRAGRANCE FROM ORIGINAL VERSION')}
               </p>
               
               <div style={{ fontSize: '0.85rem', color: 'var(--text-espresso-muted)', lineHeight: 1.6, marginBottom: '1rem' }}>
