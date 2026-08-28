@@ -18,12 +18,25 @@ export default function FragranceModal({ fragrance, onClose }) {
             display: 'flex',
             justify: 'space-between',
             alignItems: 'center',
-            padding: '1.2rem 1.5rem',
+            padding: '1rem 1.5rem',
             borderBottom: '1px solid var(--accent-gold-border)',
             backgroundColor: 'var(--bg-warm-beige)'
           }}
         >
-          <span className="gold-badge">{fragrance.type}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <img
+              src="/assets/Logo.jpeg"
+              alt="Jassi Perfume Logo"
+              style={{
+                height: '28px',
+                width: '28px',
+                objectFit: 'cover',
+                borderRadius: '50%',
+                border: '1px solid var(--accent-gold)'
+              }}
+            />
+            <span className="gold-badge">{fragrance.type}</span>
+          </div>
           <button
             onClick={onClose}
             aria-label="Close modal"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import StickyBottomBar from './components/StickyBottomBar';
@@ -10,6 +10,56 @@ import AboutContactPage from './pages/AboutContactPage';
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedFragrance, setSelectedFragrance] = useState(null);
+
+  // Dynamic Blinking Browser Tab Title when user switches tabs
+  useEffect(() => {
+    const SITE_TITLE = "Jassi Perfume | Premium Attar & Inspired Fragrances in Malad East";
+    let delayTimer = null;
+    let blinkInterval = null;
+
+    const stopBlinkingAndRestore = () => {
+      if (delayTimer) {
+        clearTimeout(delayTimer);
+        delayTimer = null;
+      }
+      if (blinkInterval) {
+        clearInterval(blinkInterval);
+        blinkInterval = null;
+      }
+      document.title = SITE_TITLE;
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        // Wait 2 seconds before starting the blinking effect
+        delayTimer = setTimeout(() => {
+          let toggle = false;
+          document.title = "👉 Come here";
+
+          // Blink title every 0.5 seconds (500ms) alternating between "Jassi Perfume" and "👉 Come here"
+          blinkInterval = setInterval(() => {
+            document.title = toggle ? "👉 Come here" : "Jassi Perfume";
+            toggle = !toggle;
+          }, 500);
+        }, 2000);
+      } else {
+        // Customer returned to tab - immediately restore website title
+        stopBlinkingAndRestore();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', stopBlinkingAndRestore);
+
+    // Initial check on mount
+    document.title = SITE_TITLE;
+
+    return () => {
+      stopBlinkingAndRestore();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', stopBlinkingAndRestore);
+    };
+  }, []);
 
   const handleSelectFragrance = (fragrance) => {
     setSelectedFragrance(fragrance);

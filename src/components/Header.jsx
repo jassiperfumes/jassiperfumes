@@ -71,31 +71,46 @@ export default function Header({ currentPage, setCurrentPage }) {
         {/* Brand Logo */}
         <div
           onClick={() => handleNavClick('home')}
-          style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}
+          style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem' }}
         >
-          <span
+          <img
+            src="/assets/Logo.jpeg"
+            alt="Jassi Perfume Logo"
             style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: '1.4rem',
-              fontWeight: 700,
-              letterSpacing: '0.12em',
-              color: 'var(--text-espresso)',
-              lineHeight: 1.1
+              height: '46px',
+              width: '46px',
+              objectFit: 'cover',
+              borderRadius: '50%',
+              border: '1.5px solid var(--accent-gold)',
+              boxShadow: '0 2px 8px rgba(43, 33, 27, 0.15)',
+              flexShrink: 0
             }}
-          >
-            JASSI PERFUME
-          </span>
-          <span
-            style={{
-              fontSize: '0.65rem',
-              letterSpacing: '0.2em',
-              color: 'var(--accent-gold)',
-              textTransform: 'uppercase',
-              marginTop: '2px'
-            }}
-          >
-            Attar & Inspired Fragrances
-          </span>
+          />
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: '1.35rem',
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                color: 'var(--text-espresso)',
+                lineHeight: 1.1
+              }}
+            >
+              JASSI PERFUME
+            </span>
+            <span
+              style={{
+                fontSize: '0.65rem',
+                letterSpacing: '0.2em',
+                color: 'var(--accent-gold)',
+                textTransform: 'uppercase',
+                marginTop: '2px'
+              }}
+            >
+              Attar & Inspired Fragrances
+            </span>
+          </div>
         </div>
 
         {/* Desktop Navigation */}

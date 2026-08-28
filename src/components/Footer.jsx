@@ -23,17 +23,38 @@ export default function Footer({ setCurrentPage }) {
         >
           {/* Brand Col */}
           <div>
-            <h3
-              style={{
-                fontFamily: 'var(--font-serif)',
-                fontSize: '1.15rem',
-                letterSpacing: '0.08em',
-                color: 'var(--accent-gold-light)',
-                margin: '0 0 0.35rem 0'
-              }}
-            >
-              JASSI PERFUME
-            </h3>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem' }}>
+              <img
+                src="/assets/Logo.jpeg"
+                alt="Jassi Perfume Logo"
+                style={{
+                  height: '48px',
+                  width: '48px',
+                  objectFit: 'cover',
+                  borderRadius: '50%',
+                  border: '1.5px solid var(--accent-gold-light)',
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+                  flexShrink: 0
+                }}
+              />
+              <div>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '1.25rem',
+                    letterSpacing: '0.08em',
+                    color: 'var(--accent-gold-light)',
+                    margin: 0,
+                    lineHeight: 1.2
+                  }}
+                >
+                  JASSI PERFUME
+                </h3>
+                <span style={{ fontSize: '0.65rem', letterSpacing: '0.18em', color: 'var(--accent-gold)', textTransform: 'uppercase' }}>
+                  Attar & Inspired Fragrances
+                </span>
+              </div>
+            </div>
             <p style={{ fontSize: '0.8rem', color: 'rgba(255, 249, 240, 0.75)', lineHeight: 1.5, margin: 0 }}>
               Pure concentrated attars & signature inspired fragrance profiles in Malad East, Mumbai.
             </p>

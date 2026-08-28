@@ -44,6 +44,20 @@ export default function CataloguePage({ onSelectFragrance }) {
         }}
       >
         <div className="container" style={{ maxWidth: '750px' }}>
+          <img
+            src="/assets/Logo.jpeg"
+            alt="Jassi Perfume Logo"
+            style={{
+              height: '60px',
+              width: '60px',
+              objectFit: 'cover',
+              borderRadius: '50%',
+              border: '2px solid var(--accent-gold)',
+              margin: '0 auto 0.75rem auto',
+              display: 'block',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)'
+            }}
+          />
           <span style={{ fontSize: '0.75rem', letterSpacing: '0.25em', color: 'var(--accent-gold-light)', textTransform: 'uppercase', fontWeight: 700 }}>
             CATALOGUE & INQUIRY
           </span>

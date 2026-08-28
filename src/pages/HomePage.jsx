@@ -103,6 +103,22 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             maxWidth: '850px'
           }}
         >
+          {/* Brand Emblem Logo */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.25rem' }}>
+            <img
+              src="/assets/Logo.jpeg"
+              alt="Jassi Perfume Logo Crest"
+              style={{
+                height: '80px',
+                width: '80px',
+                objectFit: 'cover',
+                borderRadius: '50%',
+                border: '2px solid var(--accent-gold)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 163, 89, 0.3)'
+              }}
+            />
+          </div>
+
           <div className="hero-slide-badge" style={{ marginBottom: '1rem' }}>
             <span
               style={{
@@ -387,8 +403,22 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
 
             {/* Right Text */}
             <div>
-              <div style={{ fontSize: '0.8rem', letterSpacing: '0.2em', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                ABOUT JASSI PERFUME
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.75rem' }}>
+                <img
+                  src="/assets/Logo.jpeg"
+                  alt="Jassi Perfume Seal"
+                  style={{
+                    height: '36px',
+                    width: '36px',
+                    objectFit: 'cover',
+                    borderRadius: '50%',
+                    border: '1.5px solid var(--accent-gold)',
+                    flexShrink: 0
+                  }}
+                />
+                <span style={{ fontSize: '0.8rem', letterSpacing: '0.2em', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase' }}>
+                  ABOUT JASSI PERFUME
+                </span>
               </div>
               <h2
                 style={{
