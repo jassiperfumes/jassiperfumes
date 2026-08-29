@@ -10,22 +10,19 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
       image: '/assets/hero_slide_1.png',
       badge: '100% NON-ALCOHOLIC & INSPIRED',
       title: 'THE ART OF FRAGRANCE',
-      italic: '100% Non-Alcoholic Pure Attars & Inspired Fragrance Profiles',
-      description: 'Discover elegant fragrance profiles inspired by iconic perfumes, crafted with 100% non-alcoholic pure oils for your everyday signature.'
+      description: 'Discover luxury inspired perfumes and 100% pure non-alcoholic attars crafted for your everyday signature.'
     },
     {
       image: '/assets/hero_slide_2.png',
-      badge: '100% PURE NON-ALCOHOLIC ATTARS',
+      badge: '100% PURE ATTARS',
       title: 'TIMELESS ESSENCE',
-      italic: 'Hand-Poured 100% Alcohol-Free Oils Crafted for Depth & Character',
-      description: 'Experience rich, 100% non-alcoholic pure fragrance oils tailored for long-lasting sophistication.'
+      description: 'Hand-poured 100% alcohol-free pure oils crafted for depth, richness, and long-lasting character.'
     },
     {
       image: '/assets/hero_slide_3.png',
-      badge: 'INSPIRED FRAGRANCE VERSIONS',
+      badge: 'INSPIRED EDITIONS',
       title: 'SIGNATURE SCENTS',
-      italic: 'Iconic Inspired Fragrance Versions for Modern Wear',
-      description: 'Explore affordable luxury with custom inspired perfume versions of world-renowned fragrance creations.'
+      description: 'Explore custom inspired fragrance versions of world-renowned luxury perfume creations.'
     }
   ];
 
@@ -46,7 +43,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           position: 'relative',
           display: 'flex',
           alignItems: 'center',
-          justify: 'center',
+          justifyContent: 'center',
           overflow: 'hidden',
           backgroundColor: '#2B211B',
           color: '#FFF9F0'
@@ -94,157 +91,31 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
         <div
           key={currentSlide}
           className="container hero-animated-content"
-          style={{
-            position: 'relative',
-            zIndex: 10,
-            textAlign: 'center',
-            paddingTop: '3rem',
-            paddingBottom: '3rem',
-            maxWidth: '850px'
-          }}
         >
           {/* Brand Emblem Logo */}
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.25rem' }}>
+          <div className="hero-logo-crest">
             <img
               src="/assets/Logo.jpeg"
               alt="Jassi Perfume Logo Crest"
-              style={{
-                height: '80px',
-                width: '80px',
-                objectFit: 'cover',
-                borderRadius: '50%',
-                border: '2px solid var(--accent-gold)',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 163, 89, 0.3)'
-              }}
+              className="hero-logo-img"
             />
           </div>
 
-          <div className="hero-slide-badge" style={{ marginBottom: '1rem' }}>
-            <span
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                letterSpacing: '0.25em',
-                color: 'var(--accent-gold-light)',
-                textTransform: 'uppercase',
-                border: '1px solid var(--accent-gold)',
-                padding: '0.35rem 1.25rem',
-                borderRadius: '50px',
-                backgroundColor: 'rgba(43, 33, 27, 0.6)',
-                backdropFilter: 'blur(4px)'
-              }}
-            >
+          <div className="hero-badge-wrap">
+            <span className="hero-badge-text">
               {heroSlides[currentSlide].badge}
             </span>
           </div>
 
-          <h1
-            className="hero-slide-title"
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
-              lineHeight: 1.15,
-              fontWeight: 700,
-              letterSpacing: '0.04em',
-              marginBottom: '1rem',
-              color: '#FFF9F0',
-              textShadow: '0 4px 15px rgba(0,0,0,0.4)'
-            }}
-          >
+          <h1 className="hero-slide-title">
             {heroSlides[currentSlide].title}
           </h1>
 
-          <p
-            className="hero-slide-italic"
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
-              color: 'var(--accent-gold-light)',
-              fontStyle: 'italic',
-              marginBottom: '1rem',
-              fontWeight: 400
-            }}
-          >
-            {heroSlides[currentSlide].italic}
-          </p>
-
-          <p
-            className="hero-slide-desc"
-            style={{
-              fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)',
-              color: 'rgba(255, 249, 240, 0.9)',
-              lineHeight: 1.7,
-              marginBottom: '2.5rem',
-              maxWidth: '680px',
-              margin: '0 auto 2.5rem auto'
-            }}
-          >
+          <p className="hero-slide-desc">
             {heroSlides[currentSlide].description}
           </p>
 
-          {/* Key Feature Badges Row */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-            <span
-              style={{
-                fontSize: '0.775rem',
-                fontWeight: 700,
-                letterSpacing: '0.05em',
-                color: '#FFF9F0',
-                backgroundColor: 'rgba(197, 160, 89, 0.25)',
-                border: '1px solid var(--accent-gold)',
-                padding: '0.35rem 0.9rem',
-                borderRadius: '50px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                backdropFilter: 'blur(4px)'
-              }}
-            >
-              <Droplet size={14} color="var(--accent-gold)" />
-              100% NON-ALCOHOLIC
-            </span>
-            <span
-              style={{
-                fontSize: '0.775rem',
-                fontWeight: 700,
-                letterSpacing: '0.05em',
-                color: '#FFF9F0',
-                backgroundColor: 'rgba(197, 160, 89, 0.25)',
-                border: '1px solid var(--accent-gold)',
-                padding: '0.35rem 0.9rem',
-                borderRadius: '50px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                backdropFilter: 'blur(4px)'
-              }}
-            >
-              <Sparkles size={14} color="var(--accent-gold)" />
-              INSPIRED VERSIONS
-            </span>
-            <span
-              style={{
-                fontSize: '0.775rem',
-                fontWeight: 700,
-                letterSpacing: '0.05em',
-                color: '#FFF9F0',
-                backgroundColor: 'rgba(197, 160, 89, 0.25)',
-                border: '1px solid var(--accent-gold)',
-                padding: '0.35rem 0.9rem',
-                borderRadius: '50px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                backdropFilter: 'blur(4px)'
-              }}
-            >
-              <CheckCircle2 size={14} color="var(--accent-gold)" />
-              LONG-LASTING OILS
-            </span>
-          </div>
-
-          <div className="hero-slide-buttons" style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="hero-slide-buttons">
             <button
               onClick={() => { setCurrentPage('catalogue'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="btn-gold"
@@ -263,7 +134,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           </div>
 
           {/* Slide Indicator Dots */}
-          <div style={{ display: 'flex', gap: '0.6rem', justifyContent: 'center', marginTop: '2.5rem' }}>
+          <div className="hero-dots-wrap">
             {heroSlides.map((_, idx) => (
               <button
                 key={idx}
@@ -318,143 +189,118 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
         </div>
       </div>
 
-      {/* TRUST STRIP (Horizontal 4-Card Grid with Animations) */}
+      {/* TRUST STRIP (3 Circle Items with Headings Only) */}
       <section
         style={{
           backgroundColor: 'var(--bg-cream)',
-          borderBottom: '1px solid var(--accent-gold-border)'
+          borderBottom: '1px solid var(--accent-gold-border)',
+          padding: '2.5rem 0'
         }}
         className="home-trust-section"
       >
         <div className="container">
-          <div className="trust-2x2-grid">
+          <div className="trust-3-grid">
             {/* Item 1 */}
             <div className="trust-card">
               <div className="trust-icon-badge">
-                <Droplet size={24} color="var(--accent-gold)" />
+                <Droplet size={26} color="var(--accent-gold)" />
               </div>
-              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase', color: 'var(--text-espresso)', fontWeight: 700 }}>
+              <h4 className="trust-card-title">
                 100% NON-ALCOHOLIC
               </h4>
-              <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)' }}>
-                Pure concentrated fragrance oils & attars
-              </p>
             </div>
 
             {/* Item 2 */}
             <div className="trust-card">
               <div className="trust-icon-badge">
-                <Sparkles size={24} color="var(--accent-gold)" />
+                <Sparkles size={26} color="var(--accent-gold)" />
               </div>
-              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase', color: 'var(--text-espresso)', fontWeight: 700 }}>
+              <h4 className="trust-card-title">
                 INSPIRED VERSIONS
               </h4>
-              <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)' }}>
-                Familiar & iconic perfume scent profiles
-              </p>
             </div>
 
             {/* Item 3 */}
             <div className="trust-card">
               <div className="trust-icon-badge">
-                <Award size={24} color="var(--accent-gold)" />
+                <Award size={26} color="var(--accent-gold)" />
               </div>
-              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase', color: 'var(--text-espresso)', fontWeight: 700 }}>
+              <h4 className="trust-card-title">
                 PERSONAL SERVICE
               </h4>
-              <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)' }}>
-                Tailored fragrance consultation
-              </p>
-            </div>
-
-            {/* Item 4 */}
-            <div className="trust-card">
-              <div className="trust-icon-badge">
-                <MapPin size={24} color="var(--accent-gold)" />
-              </div>
-              <h4 style={{ fontSize: '0.9rem', letterSpacing: '0.08em', marginBottom: '0.3rem', textTransform: 'uppercase', color: 'var(--text-espresso)', fontWeight: 700 }}>
-                MALAD EAST, MUMBAI
-              </h4>
-              <p style={{ fontSize: '0.825rem', color: 'var(--text-espresso-muted)' }}>
-                Visit our local boutique store
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ABOUT INTRO SECTION (Merged) */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-warm-beige)' }}>
+      {/* ABOUT INTRO SECTION (Minimalist on Mobile) */}
+      <section className="section-padding about-home-section" style={{ backgroundColor: 'var(--bg-warm-beige)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '3.5rem', alignItems: 'center' }} className="responsive-split">
+          <div className="about-home-split">
             {/* Left Image */}
-            <div style={{ position: 'relative' }}>
-              <div style={{ border: '1px solid var(--accent-gold)', padding: '1rem', background: 'var(--bg-cream)', boxShadow: 'var(--shadow-medium)', borderRadius: '4px' }}>
+            <div className="about-img-wrapper">
+              <div className="about-img-card">
                 <img
                   src="/assets/about_attar.png"
                   alt="Traditional Attar Bottle"
-                  style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block', borderRadius: '2px' }}
+                  className="about-main-img"
                 />
               </div>
-              <div style={{ position: 'absolute', bottom: '-15px', right: '-15px', background: 'var(--accent-dark-brown)', color: 'var(--accent-gold)', padding: '1rem 1.5rem', fontFamily: 'var(--font-serif)', fontSize: '0.9rem', fontStyle: 'italic', border: '1px solid var(--accent-gold)' }}>
+              <div className="about-badge-floating">
                 Authentic Craftsmanship
               </div>
             </div>
 
             {/* Right Text */}
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.75rem' }}>
+            <div className="about-text-content">
+              <div className="about-subtitle-wrap">
                 <img
                   src="/assets/Logo.jpeg"
                   alt="Jassi Perfume Seal"
-                  style={{
-                    height: '36px',
-                    width: '36px',
-                    objectFit: 'cover',
-                    borderRadius: '50%',
-                    border: '1.5px solid var(--accent-gold)',
-                    flexShrink: 0
-                  }}
+                  className="about-crest-logo"
                 />
-                <span style={{ fontSize: '0.8rem', letterSpacing: '0.2em', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase' }}>
+                <span className="about-subtitle-text">
                   ABOUT JASSI PERFUME
                 </span>
               </div>
-              <h2
-                style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: 'clamp(2rem, 3vw, 2.8rem)',
-                  lineHeight: 1.2,
-                  marginBottom: '1.25rem',
-                  color: 'var(--text-espresso)'
-                }}
-              >
+              <h2 className="about-heading">
                 Where Fragrance Meets Tradition
               </h2>
-              <p style={{ fontSize: '0.975rem', lineHeight: 1.8, color: 'var(--text-espresso-muted)', marginBottom: '1rem' }}>
-                Jassi Perfume is your local fragrance boutique in Malad East, Mumbai, specializing in concentrated attars and inspired fragrance profiles. We believe fragrance is more than a scent — it is part of your personal identity.
-              </p>
-              <p style={{ fontSize: '0.975rem', lineHeight: 1.8, color: 'var(--text-espresso-muted)', marginBottom: '1.5rem' }}>
-                Whether you prefer fresh, woody, floral, sweet, oriental or rich oud-based scents, our collection brings together timeless traditions and modern scent preferences.
-              </p>
 
-              {/* Highlights */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '2rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-espresso)' }}>
-                  <CheckCircle2 size={18} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
-                  <span>100% Alcohol-Free Pure Attar Oils</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-espresso)' }}>
-                  <CheckCircle2 size={18} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
-                  <span>Designer-Inspired Signature Fragrance Profiles</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-espresso)' }}>
-                  <CheckCircle2 size={18} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
-                  <span>Personalized Scent Selection & Store Consultation</span>
+              {/* Desktop Full Text */}
+              <div className="about-desktop-text">
+                <p className="about-paragraph">
+                  Jassi Perfume is your local fragrance boutique in Malad East, Mumbai, specializing in concentrated attars and inspired fragrance profiles. We believe fragrance is more than a scent — it is part of your personal identity.
+                </p>
+                <p className="about-paragraph">
+                  Whether you prefer fresh, woody, floral, sweet, oriental or rich oud-based scents, our collection brings together timeless traditions and modern scent preferences.
+                </p>
+
+                {/* Highlights */}
+                <div className="about-highlights-list">
+                  <div className="about-highlight-item">
+                    <CheckCircle2 size={18} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
+                    <span>100% Alcohol-Free Pure Attar Oils</span>
+                  </div>
+                  <div className="about-highlight-item">
+                    <CheckCircle2 size={18} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
+                    <span>Designer-Inspired Signature Fragrance Profiles</span>
+                  </div>
+                  <div className="about-highlight-item">
+                    <CheckCircle2 size={18} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
+                    <span>Personalized Scent Selection & Store Consultation</span>
+                  </div>
                 </div>
               </div>
+
+              {/* Mobile Minimalist Text */}
+              <div className="about-mobile-text">
+                <p className="about-paragraph">
+                  Your boutique in Malad East, Mumbai — specializing in 100% pure alcohol-free attars and iconic inspired fragrance profiles for your daily signature.
+                </p>
+              </div>
               
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <div className="about-cta-buttons">
                 <button
                   onClick={() => { setCurrentPage('catalogue'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                   className="btn-gold"
@@ -823,30 +669,176 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             font-size: 0.75rem !important;
           }
         }
+        /* About Section Styles */
+        .about-home-split {
+          display: grid;
+          grid-template-columns: 1fr 1.1fr;
+          gap: 3.5rem;
+          align-items: center;
+        }
+        .about-img-wrapper {
+          position: relative;
+        }
+        .about-img-card {
+          border: 1px solid var(--accent-gold);
+          padding: 1rem;
+          background: var(--bg-cream);
+          box-shadow: var(--shadow-medium);
+          border-radius: 4px;
+        }
+        .about-main-img {
+          width: 100%;
+          height: 420px;
+          object-fit: cover;
+          display: block;
+          border-radius: 2px;
+        }
+        .about-badge-floating {
+          position: absolute;
+          bottom: -15px;
+          right: -15px;
+          background: var(--accent-dark-brown);
+          color: var(--accent-gold);
+          padding: 1rem 1.5rem;
+          font-family: var(--font-serif);
+          font-size: 0.9rem;
+          font-style: italic;
+          border: 1px solid var(--accent-gold);
+        }
+        .about-subtitle-wrap {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          margin-bottom: 0.75rem;
+        }
+        .about-crest-logo {
+          height: 36px;
+          width: 36px;
+          object-fit: cover;
+          border-radius: 50%;
+          border: 1.5px solid var(--accent-gold);
+          flex-shrink: 0;
+        }
+        .about-subtitle-text {
+          font-size: 0.8rem;
+          letter-spacing: 0.2em;
+          color: var(--accent-gold);
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+        .about-heading {
+          font-family: var(--font-serif);
+          font-size: clamp(2rem, 3vw, 2.8rem);
+          line-height: 1.2;
+          margin-bottom: 1.25rem;
+          color: var(--text-espresso);
+        }
+        .about-paragraph {
+          font-size: 0.975rem;
+          line-height: 1.8;
+          color: var(--text-espresso-muted);
+          margin-bottom: 1rem;
+        }
+        .about-highlights-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.65rem;
+          margin-bottom: 2rem;
+        }
+        .about-highlight-item {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: var(--text-espresso);
+        }
+        .about-cta-buttons {
+          display: flex;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        .about-mobile-text {
+          display: none;
+        }
+        .about-desktop-text {
+          display: block;
+        }
+
         @media (max-width: 768px) {
-          .responsive-split {
+          .about-home-split {
             grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+          }
+          .about-img-card {
+            padding: 0.4rem !important;
+            border-radius: 8px !important;
+          }
+          .about-main-img {
+            height: 180px !important;
+            border-radius: 6px !important;
+          }
+          .about-badge-floating {
+            bottom: -6px !important;
+            right: -4px !important;
+            padding: 0.35rem 0.75rem !important;
+            font-size: 0.7rem !important;
+          }
+          .about-subtitle-wrap {
+            margin-bottom: 0.35rem !important;
+          }
+          .about-crest-logo {
+            height: 26px !important;
+            width: 26px !important;
+          }
+          .about-subtitle-text {
+            font-size: 0.68rem !important;
+          }
+          .about-heading {
+            font-size: 1.35rem !important;
+            margin-bottom: 0.5rem !important;
+            line-height: 1.2 !important;
+          }
+          .about-desktop-text {
+            display: none !important;
+          }
+          .about-mobile-text {
+            display: block !important;
+            margin-bottom: 0.95rem !important;
+          }
+          .about-mobile-text .about-paragraph {
+            font-size: 0.825rem !important;
+            line-height: 1.5 !important;
+            margin-bottom: 0 !important;
+          }
+          .about-cta-buttons {
+            gap: 0.5rem !important;
+          }
+          .about-cta-buttons .btn-gold,
+          .about-cta-buttons .btn-secondary {
+            padding: 0.55rem 1rem !important;
+            font-size: 0.75rem !important;
           }
         }
-        /* Trust Strip Horizontal Grid & 4 Circle Cards Animations */
-        .trust-2x2-grid {
+
+        /* Trust Strip 3 Circle Items Grid */
+        .trust-3-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.5rem;
-          max-width: 1200px;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+          max-width: 900px;
           margin: 0 auto;
         }
-        @media (max-width: 992px) {
-          .trust-2x2-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
-            max-width: 720px;
+        @media (max-width: 768px) {
+          .trust-3-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
           }
         }
-        @media (max-width: 576px) {
-          .trust-2x2-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.85rem;
+        @media (max-width: 480px) {
+          .trust-3-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
           }
         }
         .trust-card {
@@ -857,16 +849,54 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           padding: 1.5rem 1rem;
           background: rgba(255, 249, 240, 0.85);
           border: 1px solid var(--accent-gold-border);
-          border-radius: 16px;
+          border-radius: 20px;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           position: relative;
           overflow: hidden;
         }
         .trust-card:hover {
-          transform: translateY(-8px);
+          transform: translateY(-6px);
           border-color: var(--accent-gold);
-          box-shadow: 0 14px 30px rgba(43, 33, 27, 0.12);
+          box-shadow: 0 12px 28px rgba(43, 33, 27, 0.1);
           background: #FFFFFF;
+        }
+        .trust-card-title {
+          font-size: 0.875rem;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--text-espresso);
+          font-weight: 700;
+          line-height: 1.3;
+          margin: 0;
+        }
+        @media (max-width: 768px) {
+          .trust-card {
+            padding: 1rem 0.5rem;
+            border-radius: 14px;
+          }
+          .trust-card-title {
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+          }
+        }
+        @media (max-width: 420px) {
+          .trust-card {
+            padding: 0.85rem 0.35rem;
+            border-radius: 12px;
+          }
+          .trust-card-title {
+            font-size: 0.62rem;
+            letter-spacing: 0.02em;
+          }
+          .trust-icon-badge {
+            width: 46px !important;
+            height: 46px !important;
+            margin-bottom: 0.6rem !important;
+          }
+          .trust-icon-badge svg {
+            width: 20px !important;
+            height: 20px !important;
+          }
         }
         .trust-icon-badge {
           position: relative;
@@ -886,9 +916,8 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
         .trust-card:nth-child(1) .trust-icon-badge { animation-delay: 0s; }
         .trust-card:nth-child(2) .trust-icon-badge { animation-delay: 0.5s; }
         .trust-card:nth-child(3) .trust-icon-badge { animation-delay: 1s; }
-        .trust-card:nth-child(4) .trust-icon-badge { animation-delay: 1.5s; }
 
-        /* Expanding Ripple Pulse Aura for 4 Circle Cards */
+        /* Expanding Ripple Pulse Aura for 3 Circle Cards */
         .trust-icon-badge::before {
           content: '';
           position: absolute;
@@ -901,7 +930,6 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
         .trust-card:nth-child(1) .trust-icon-badge::before { animation-delay: 0s; }
         .trust-card:nth-child(2) .trust-icon-badge::before { animation-delay: 0.6s; }
         .trust-card:nth-child(3) .trust-icon-badge::before { animation-delay: 1.2s; }
-        .trust-card:nth-child(4) .trust-icon-badge::before { animation-delay: 1.8s; }
 
         .trust-card:hover .trust-icon-badge {
           background-color: var(--accent-dark-brown);

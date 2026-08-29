@@ -244,9 +244,197 @@ button {
   box-shadow: var(--shadow-medium);
 }
 
-/* Remove bottom body padding offset */
+/* Hero Section Base & Responsive Styles */
+.home-hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #2B211B;
+  color: #FFF9F0;
+  min-height: 80vh;
+  box-sizing: border-box;
+}
+
+.hero-animated-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.hero-logo-crest {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.hero-logo-img {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--accent-gold);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 163, 89, 0.3);
+}
+
+.hero-badge-wrap {
+  margin-bottom: 1rem;
+}
+
+.hero-badge-text {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--accent-gold-light);
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold);
+  padding: 0.35rem 1.25rem;
+  border-radius: 50px;
+  background-color: rgba(43, 33, 27, 0.6);
+  backdrop-filter: blur(4px);
+  display: inline-block;
+}
+
+.hero-slide-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+  color: #FFF9F0;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.hero-slide-desc {
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  color: rgba(255, 249, 240, 0.9);
+  line-height: 1.65;
+  margin: 0 auto 2.25rem auto;
+  max-width: 620px;
+}
+
+.hero-slide-buttons {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-dots-wrap {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Mobile & Tablet Optimizations */
 @media (max-width: 768px) {
   body {
     padding-bottom: 0;
+  }
+  .header-top-banner {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.65rem !important;
+  }
+  .header-main-container {
+    padding: 0.65rem 1rem !important;
+  }
+  .header-brand-logo {
+    height: 40px !important;
+    width: 40px !important;
+  }
+  .header-brand-title {
+    font-size: 1.15rem !important;
+  }
+  .header-brand-subtitle {
+    font-size: 0.55rem !important;
+  }
+  .home-hero-section {
+    min-height: calc(100svh - 85px);
+    height: auto;
+    padding: 0.75rem 0;
+  }
+  .hero-animated-content {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  .hero-logo-crest {
+    margin-bottom: 0.65rem !important;
+  }
+  .hero-logo-img {
+    height: 52px !important;
+    width: 52px !important;
+  }
+  .hero-badge-wrap {
+    margin-bottom: 0.5rem !important;
+  }
+  .hero-badge-text {
+    font-size: 0.65rem !important;
+    letter-spacing: 0.15em !important;
+    padding: 0.25rem 0.85rem !important;
+  }
+  .hero-slide-title {
+    font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+    margin-bottom: 0.45rem !important;
+    line-height: 1.15 !important;
+  }
+  .hero-slide-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+    margin: 0 auto 1.1rem auto !important;
+    max-width: 380px !important;
+  }
+  .hero-slide-buttons {
+    gap: 0.75rem !important;
+  }
+  .hero-slide-buttons .btn-gold,
+  .hero-slide-buttons .btn-secondary {
+    padding: 0.65rem 1.25rem !important;
+    font-size: 0.78rem !important;
+  }
+  .hero-dots-wrap {
+    margin-top: 0.85rem !important;
+    gap: 0.4rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .home-hero-section {
+    min-height: calc(100svh - 78px);
+  }
+  .hero-logo-img {
+    height: 46px !important;
+    width: 46px !important;
+  }
+  .hero-badge-text {
+    font-size: 0.6rem !important;
+    padding: 0.2rem 0.65rem !important;
+    letter-spacing: 0.12em !important;
+  }
+  .hero-slide-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+  .hero-slide-desc {
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.95rem !important;
+  }
+  .hero-slide-buttons .btn-gold,
+  .hero-slide-buttons .btn-secondary {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.72rem !important;
+  }
+  .hero-dots-wrap {
+    margin-top: 0.65rem !important;
   }
 }

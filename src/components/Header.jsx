@@ -49,6 +49,7 @@ export default function Header({ currentPage, setCurrentPage }) {
     >
       {/* Top Banner Strip */}
       <div
+        className="header-top-banner"
         style={{
           backgroundColor: 'var(--accent-dark-brown)',
           color: 'var(--bg-cream)',
@@ -67,7 +68,7 @@ export default function Header({ currentPage, setCurrentPage }) {
         <Sparkles size={12} color="var(--accent-gold)" />
       </div>
 
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 1.5rem' }}>
+      <div className="container header-main-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 1.5rem' }}>
         {/* Brand Logo */}
         <div
           onClick={() => handleNavClick('home')}
@@ -76,6 +77,7 @@ export default function Header({ currentPage, setCurrentPage }) {
           <img
             src="/assets/Logo.jpeg"
             alt="Jassi Perfume Logo"
+            className="header-brand-logo"
             style={{
               height: '46px',
               width: '46px',
@@ -88,6 +90,7 @@ export default function Header({ currentPage, setCurrentPage }) {
           />
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span
+              className="header-brand-title"
               style={{
                 fontFamily: 'var(--font-serif)',
                 fontSize: '1.35rem',
@@ -100,6 +103,7 @@ export default function Header({ currentPage, setCurrentPage }) {
               JASSI PERFUME
             </span>
             <span
+              className="header-brand-subtitle"
               style={{
                 fontSize: '0.65rem',
                 letterSpacing: '0.2em',
