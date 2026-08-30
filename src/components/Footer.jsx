@@ -123,7 +123,7 @@ export default function Footer({ setCurrentPage }) {
         <div
           style={{
             display: 'flex',
-            justify: 'space-between',
+            justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
             gap: '0.5rem',

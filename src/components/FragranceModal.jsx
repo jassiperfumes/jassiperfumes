@@ -16,7 +16,7 @@ export default function FragranceModal({ fragrance, onClose }) {
         <div
           style={{
             display: 'flex',
-            justify: 'space-between',
+            justifyContent: 'space-between',
             alignItems: 'center',
             padding: '1rem 1.5rem',
             borderBottom: '1px solid var(--accent-gold-border)',
@@ -63,7 +63,7 @@ export default function FragranceModal({ fragrance, onClose }) {
                 padding: '1.5rem',
                 display: 'flex',
                 alignItems: 'center',
-                justify: 'center'
+                justifyContent: 'center'
               }}
             >
               <img

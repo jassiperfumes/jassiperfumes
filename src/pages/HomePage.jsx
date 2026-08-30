@@ -167,10 +167,10 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           className="container"
           style={{
             display: 'flex',
-            justify: 'space-around',
+            justifyContent: 'center',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '1rem',
+            gap: '2.5rem',
             textAlign: 'center'
           }}
         >
@@ -432,7 +432,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                       borderRadius: '50px',
                       display: 'flex',
                       alignItems: 'center',
-                      justify: 'center',
+                      justifyContent: 'center',
                       gap: '0.4rem',
                       cursor: 'pointer',
                       boxShadow: '0 4px 12px rgba(37, 211, 102, 0.35)',
