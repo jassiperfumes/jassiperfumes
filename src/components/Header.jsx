@@ -76,7 +76,7 @@ export default function Header({ currentPage, setCurrentPage }) {
         >
           <img
             src="/assets/Logo.jpeg"
-            alt="Jassi Perfume Logo"
+            alt="Jassi Perfumes Logo"
             className="header-brand-logo"
             style={{
               height: '46px',
@@ -100,7 +100,7 @@ export default function Header({ currentPage, setCurrentPage }) {
                 lineHeight: 1.1
               }}
             >
-              JASSI PERFUME
+              JASSI PERFUMES
             </span>
             <span
               className="header-brand-subtitle"

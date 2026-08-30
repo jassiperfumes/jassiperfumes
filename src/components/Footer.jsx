@@ -26,7 +26,7 @@ export default function Footer({ setCurrentPage }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem' }}>
               <img
                 src="/assets/Logo.jpeg"
-                alt="Jassi Perfume Logo"
+                alt="Jassi Perfumes Logo"
                 style={{
                   height: '48px',
                   width: '48px',
@@ -48,7 +48,7 @@ export default function Footer({ setCurrentPage }) {
                     lineHeight: 1.2
                   }}
                 >
-                  JASSI PERFUME
+                  JASSI PERFUMES
                 </h3>
                 <span style={{ fontSize: '0.65rem', letterSpacing: '0.18em', color: 'var(--accent-gold)', textTransform: 'uppercase' }}>
                   Attar & Inspired Fragrances
@@ -132,7 +132,7 @@ export default function Footer({ setCurrentPage }) {
             color: 'rgba(255, 249, 240, 0.5)'
           }}
         >
-          <div>&copy; 2026 Jassi Perfume. All Rights Reserved.</div>
+          <div>&copy; 2026 Jassi Perfumes. All Rights Reserved.</div>
           <div>* Scent names used solely for fragrance profile identification.</div>
         </div>
       </div>

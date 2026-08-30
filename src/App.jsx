@@ -13,7 +13,7 @@ export default function App() {
 
   // Dynamic Blinking Browser Tab Title when user switches tabs
   useEffect(() => {
-    const SITE_TITLE = "Jassi Perfume | Premium Attar & Inspired Fragrances in Malad East";
+    const SITE_TITLE = "Jassi Perfumes | Premium Attar & Inspired Fragrances in Malad East";
     let delayTimer = null;
     let blinkInterval = null;
 
@@ -36,9 +36,9 @@ export default function App() {
           let toggle = false;
           document.title = "👉 Come here";
 
-          // Blink title every 0.5 seconds (500ms) alternating between "Jassi Perfume" and "👉 Come here"
+          // Blink title every 0.5 seconds (500ms) alternating between "Jassi Perfumes" and "👉 Come here"
           blinkInterval = setInterval(() => {
-            document.title = toggle ? "👉 Come here" : "Jassi Perfume";
+            document.title = toggle ? "👉 Come here" : "Jassi Perfumes";
             toggle = !toggle;
           }, 500);
         }, 2000);

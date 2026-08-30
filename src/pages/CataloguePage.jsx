@@ -46,7 +46,7 @@ export default function CataloguePage({ onSelectFragrance }) {
         <div className="container" style={{ maxWidth: '750px' }}>
           <img
             src="/assets/Logo.jpeg"
-            alt="Jassi Perfume Logo"
+            alt="Jassi Perfumes Logo"
             style={{
               height: '60px',
               width: '60px',
@@ -72,7 +72,7 @@ export default function CataloguePage({ onSelectFragrance }) {
             FRAGRANCE COLLECTION
           </h1>
           <p style={{ fontSize: '0.95rem', color: 'rgba(255, 249, 240, 0.85)', lineHeight: 1.6 }}>
-            Explore {FRAGRANCES.length} fragrance profiles available at Jassi Perfume.
+            Explore {FRAGRANCES.length} fragrance profiles available at Jassi Perfumes.
           </p>
         </div>
       </section>
@@ -232,7 +232,7 @@ export default function CataloguePage({ onSelectFragrance }) {
                       onClick={(e) => {
                         e.stopPropagation();
                         const text = encodeURIComponent(
-                          `Hi Jassi Perfume! I would like to order/inquire about "${item.name}". Please share availability & details.`
+                          `Hi Jassi Perfumes! I would like to order/inquire about "${item.name}". Please share availability & details.`
                         );
                         window.open(`https://wa.me/919619113993?text=${text}`, '_blank', 'noopener,noreferrer');
                       }}
@@ -282,7 +282,7 @@ export default function CataloguePage({ onSelectFragrance }) {
           >
             <AlertCircle size={20} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
             <p style={{ fontSize: '0.8rem', color: 'var(--text-espresso-muted)', lineHeight: 1.5 }}>
-              <strong>Brand Safety Disclaimer:</strong> Fragrance names are used solely for scent-profile identification. Jassi Perfume offers custom inspired fragrance profiles and traditional attars, and is not affiliated with the respective original brand owners.
+              <strong>Brand Safety Disclaimer:</strong> Fragrance names are used solely for scent-profile identification. Jassi Perfumes offers custom inspired fragrance profiles and traditional attars, and is not affiliated with the respective original brand owners.
             </p>
           </div>
         </div>
@@ -343,7 +343,7 @@ export default function CataloguePage({ onSelectFragrance }) {
 
           <div style={{ textAlign: 'center' }}>
             <a
-              href="https://wa.me/919619113993?text=Hi%20Jassi%20Perfume,%20I%20would%20like%20to%20ask%20about%20your%20concentrated%20Attar%20collection."
+              href="https://wa.me/919619113993?text=Hi%20Jassi%20Perfumes,%20I%20would%20like%20to%20ask%20about%20your%20concentrated%20Attar%20collection."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold"

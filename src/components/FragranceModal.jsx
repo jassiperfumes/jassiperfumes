@@ -5,7 +5,7 @@ export default function FragranceModal({ fragrance, onClose }) {
   if (!fragrance) return null;
 
   const whatsappMessage = encodeURIComponent(
-    `Hi! I am inquiring about the inspired fragrance profile "${fragrance.name}" from Jassi Perfume. Could you please share availability and pricing details?`
+    `Hi! I am inquiring about the inspired fragrance profile "${fragrance.name}" from Jassi Perfumes. Could you please share availability and pricing details?`
   );
   const whatsappUrl = `https://wa.me/919619113993?text=${whatsappMessage}`;
 
@@ -26,7 +26,7 @@ export default function FragranceModal({ fragrance, onClose }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
             <img
               src="/assets/Logo.jpeg"
-              alt="Jassi Perfume Logo"
+              alt="Jassi Perfumes Logo"
               style={{
                 height: '28px',
                 width: '28px',
@@ -164,7 +164,7 @@ export default function FragranceModal({ fragrance, onClose }) {
           >
             <AlertCircle size={14} style={{ flexShrink: 0, marginTop: '2px' }} />
             <span>
-              Disclaimer: Fragrance profile names are used strictly for scent profile identification. Jassi Perfume offers custom inspired fragrance profiles and is not affiliated with original brand owners.
+              Disclaimer: Fragrance profile names are used strictly for scent profile identification. Jassi Perfumes offers custom inspired fragrance profiles and is not affiliated with original brand owners.
             </span>
           </div>
         </div>

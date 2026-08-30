@@ -64,7 +64,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           >
             <img
               src={slide.image}
-              alt="Jassi Perfume Hero Visual"
+              alt="Jassi Perfumes Hero Visual"
               style={{
                 width: '100%',
                 height: '100%',
@@ -96,7 +96,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
           <div className="hero-logo-crest">
             <img
               src="/assets/Logo.jpeg"
-              alt="Jassi Perfume Logo Crest"
+              alt="Jassi Perfumes Logo Crest"
               className="hero-logo-img"
             />
           </div>
@@ -256,11 +256,11 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               <div className="about-subtitle-wrap">
                 <img
                   src="/assets/Logo.jpeg"
-                  alt="Jassi Perfume Seal"
+                  alt="Jassi Perfumes Seal"
                   className="about-crest-logo"
                 />
                 <span className="about-subtitle-text">
-                  ABOUT JASSI PERFUME
+                  ABOUT JASSI PERFUMES
                 </span>
               </div>
               <h2 className="about-heading">
@@ -270,7 +270,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               {/* Desktop Full Text */}
               <div className="about-desktop-text">
                 <p className="about-paragraph">
-                  Jassi Perfume is your local fragrance boutique in Malad East, Mumbai, specializing in concentrated attars and inspired fragrance profiles. We believe fragrance is more than a scent — it is part of your personal identity.
+                  Jassi Perfumes is your local fragrance boutique in Malad East, Mumbai, specializing in concentrated attars and inspired fragrance profiles. We believe fragrance is more than a scent — it is part of your personal identity.
                 </p>
                 <p className="about-paragraph">
                   Whether you prefer fresh, woody, floral, sweet, oriental or rich oud-based scents, our collection brings together timeless traditions and modern scent preferences.
@@ -338,7 +338,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               EXPLORE OUR FRAGRANCE COLLECTION
             </h2>
             <p style={{ fontSize: '0.95rem', color: 'var(--text-espresso-muted)' }}>
-              Popular fragrance profiles available at Jassi Perfume.
+              Popular fragrance profiles available at Jassi Perfumes.
             </p>
           </div>
 
@@ -417,7 +417,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                     onClick={(e) => {
                       e.stopPropagation();
                       const text = encodeURIComponent(
-                        `Hi Jassi Perfume! I would like to order/inquire about "${item.name}". Please share availability & details.`
+                        `Hi Jassi Perfumes! I would like to order/inquire about "${item.name}". Please share availability & details.`
                       );
                       window.open(`https://wa.me/919619113993?text=${text}`, '_blank', 'noopener,noreferrer');
                     }}
@@ -470,7 +470,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
               OUR COMMITMENT
             </span>
             <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.4rem', marginTop: '0.5rem' }}>
-              Why Choose Jassi Perfume
+              Why Choose Jassi Perfumes
             </h2>
           </div>
 
