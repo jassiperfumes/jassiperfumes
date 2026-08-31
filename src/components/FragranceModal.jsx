@@ -91,15 +91,14 @@ export default function FragranceModal({ fragrance, onClose }) {
               </h2>
               <p
                 style={{
-                  fontSize: '0.825rem',
+                  fontSize: '0.8rem',
                   color: 'var(--accent-gold)',
-                  letterSpacing: '0.04em',
+                  letterSpacing: '0.02em',
                   marginBottom: '0.75rem',
-                  fontWeight: 600,
-                  textTransform: 'uppercase'
+                  fontWeight: 600
                 }}
               >
-                {fragrance.subtitle || (fragrance.category === 'GIFT ITEMS' || fragrance.type === 'GIFT SET' ? 'PREMIUM GIFT ITEM' : 'INSPIRED FRAGRANCE FROM ORIGINAL VERSION')}
+                {fragrance.subtitle || (fragrance.category === 'GIFT ITEMS' || fragrance.type === 'GIFT SET' ? 'PREMIUM GIFT ITEM' : 'Inspired version from original fragrance')}
               </p>
               
               <div style={{ fontSize: '0.85rem', color: 'var(--text-espresso-muted)', lineHeight: 1.6, marginBottom: '1rem' }}>

@@ -412,10 +412,10 @@ export const FRAGRANCES = [
   },
   {
     id: 41,
-    name: "AZZARO MOST WANTED (35ML)",
+    name: "HEART SHAPE PERFUME BOTTLE",
     category: "MEN",
     type: "INSPIRED FRAGRANCES",
-    subtitle: "INSPIRED FRAGRANCE FROM ORIGINAL VERSION",
+    subtitle: "Inspired version from original fragrance",
     notes: "Cardamom, Caramel Accord & Smoked Amberwood",
     description: "A striking heart-shaped blue metallic 35ml bottle profile with bold masculine aquatic and spiced woody notes.",
     image: "/assets/perfumes/WhatsApp Image 2026-08-18 at 12.39.44 PM.jpeg",

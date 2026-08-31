@@ -347,14 +347,12 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
             {featuredFragrances.map((item) => (
               <div
                 key={item.id}
-                onClick={() => onSelectFragrance(item)}
                 style={{
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #ECE5DB',
                   borderRadius: '16px',
                   overflow: 'hidden',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                  cursor: 'pointer',
                   display: 'flex',
                   flexDirection: 'column',
                   boxShadow: '0 4px 16px rgba(43, 33, 27, 0.06)'
@@ -407,8 +405,8 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
                     </div>
 
                     {/* Subtitle text */}
-                    <p style={{ fontSize: '0.725rem', color: '#7A6F68', margin: '0 0 1rem 0', lineHeight: 1.4, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.03em' }}>
-                      {item.subtitle || (item.category === 'GIFT ITEMS' || item.type === 'GIFT SET' ? 'PREMIUM GIFT ITEM' : 'INSPIRED FRAGRANCE FROM ORIGINAL VERSION')}
+                    <p style={{ fontSize: '0.75rem', color: '#7A6F68', margin: '0 0 1rem 0', lineHeight: 1.4, fontWeight: 600, letterSpacing: '0.01em' }}>
+                      {item.subtitle || (item.category === 'GIFT ITEMS' || item.type === 'GIFT SET' ? 'PREMIUM GIFT ITEM' : 'Inspired version from original fragrance')}
                     </p>
                   </div>
 
