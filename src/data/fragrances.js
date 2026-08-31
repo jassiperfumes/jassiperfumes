@@ -434,7 +434,7 @@ export const FRAGRANCES = [
   },
   {
     id: 43,
-    name: "METALLIC MAGENTA TRAVEL POUCH SET",
+    name: "AGARBATTI",
     category: "GIFT ITEMS",
     type: "GIFT SET",
     subtitle: "5-COMPARTMENT TRAVEL POUCH",
