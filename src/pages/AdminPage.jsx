@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Lock, 
-  Upload, 
-  Sparkles, 
-  Plus, 
-  Trash2, 
-  ArrowLeft, 
-  CheckCircle2, 
-  AlertCircle, 
+import {
+  Lock,
+  Upload,
+  Sparkles,
+  Plus,
+  Trash2,
+  ArrowLeft,
+  CheckCircle2,
+  AlertCircle,
   Image as ImageIcon,
   Star,
   Eye,
@@ -15,15 +15,15 @@ import {
   RefreshCw,
   Search
 } from 'lucide-react';
-import { 
-  getAllFragrances, 
-  uploadPerfumeImage, 
-  addFragrance, 
-  deleteFragrance 
+import {
+  getAllFragrances,
+  uploadPerfumeImage,
+  addFragrance,
+  deleteFragrance
 } from '../services/fragranceService';
 
 // Supported PINs for the store owner (easy to remember)
-const VALID_PINS = ['7860', '1234', '9619', '1993'];
+const VALID_PINS = ['03082011'];
 
 export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -35,7 +35,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
   // Form State
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  
+
   // Image Upload State
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
@@ -188,7 +188,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
   };
 
   // Filter list
-  const filteredList = fragrancesList.filter((item) => 
+  const filteredList = fragrancesList.filter((item) =>
     item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (item.category && item.category.toLowerCase().includes(searchTerm.toLowerCase()))
   );
@@ -198,7 +198,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
   // ----------------------------------------------------
   if (!isAuthenticated) {
     return (
-      <div 
+      <div
         style={{
           minHeight: '80vh',
           display: 'flex',
@@ -208,7 +208,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
           backgroundColor: '#1C1512'
         }}
       >
-        <div 
+        <div
           style={{
             maxWidth: '420px',
             width: '100%',
@@ -220,7 +220,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
             boxShadow: '0 20px 40px rgba(0,0,0,0.6)'
           }}
         >
-          <div 
+          <div
             style={{
               width: '64px',
               height: '64px',
@@ -236,7 +236,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
             <Lock size={30} color="#D4AF37" />
           </div>
 
-          <h2 
+          <h2
             style={{
               fontFamily: 'var(--font-serif)',
               fontSize: '1.75rem',
@@ -251,8 +251,8 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
           </p>
 
           <form onSubmit={handlePinSubmit}>
-            <input 
-              type="password" 
+            <input
+              type="password"
               maxLength={8}
               value={pinInput}
               onChange={(e) => setPinInput(e.target.value)}
@@ -326,9 +326,9 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
   // ----------------------------------------------------
   return (
     <div style={{ backgroundColor: '#1A1412', color: '#FFF9F0', minHeight: '100vh', paddingBottom: '5rem' }}>
-      
+
       {/* Top Admin Bar */}
-      <div 
+      <div
         style={{
           backgroundColor: '#271D18',
           borderBottom: '1px solid rgba(212, 175, 55, 0.2)',
@@ -388,10 +388,10 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
       </div>
 
       <div style={{ maxWidth: '1100px', margin: '2rem auto', padding: '0 1rem' }}>
-        
+
         {/* Status Toast */}
         {statusMessage && (
-          <div 
+          <div
             style={{
               padding: '1rem 1.25rem',
               borderRadius: '8px',
@@ -410,9 +410,9 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
         )}
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-          
+
           {/* LEFT: ADD NEW PERFUME FORM */}
-          <div 
+          <div
             style={{
               backgroundColor: '#271D18',
               border: '1px solid rgba(212, 175, 55, 0.3)',
@@ -422,7 +422,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1.5rem' }}>
-              <div 
+              <div
                 style={{
                   width: '32px',
                   height: '32px',
@@ -441,14 +441,14 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
             </div>
 
             <form onSubmit={handleFormSubmit}>
-              
+
               {/* Image Upload Box */}
               <div style={{ marginBottom: '1.5rem' }}>
                 <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.5rem', color: 'var(--accent-gold-light)' }}>
                   Perfume Bottle Photo *
                 </label>
-                
-                <div 
+
+                <div
                   onClick={() => fileInputRef.current?.click()}
                   style={{
                     border: '2px dashed rgba(212, 175, 55, 0.4)',
@@ -464,16 +464,16 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
                 >
                   {imagePreview ? (
                     <div>
-                      <img 
-                        src={imagePreview} 
-                        alt="Preview" 
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
                         style={{
                           maxHeight: '180px',
                           maxWidth: '100%',
                           objectFit: 'contain',
                           borderRadius: '6px',
                           marginBottom: '0.5rem'
-                        }} 
+                        }}
                       />
                       <div style={{ fontSize: '0.8rem', color: 'var(--accent-gold)' }}>
                         Click to change photo
@@ -491,8 +491,8 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
                     </div>
                   )}
 
-                  <input 
-                    type="file" 
+                  <input
+                    type="file"
                     ref={fileInputRef}
                     onChange={handleImageChange}
                     accept="image/*"
@@ -517,7 +517,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
                 <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.4rem', color: 'var(--accent-gold-light)' }}>
                   Perfume Name *
                 </label>
-                <input 
+                <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -542,7 +542,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
                 <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.4rem', color: 'var(--accent-gold-light)' }}>
                   Description (Optional)
                 </label>
-                <textarea 
+                <textarea
                   rows={3}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
@@ -600,7 +600,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
 
           {/* RIGHT: CURRENT PERFUMES LIST */}
           <div>
-            <div 
+            <div
               style={{
                 backgroundColor: '#271D18',
                 border: '1px solid rgba(212, 175, 55, 0.3)',
@@ -643,7 +643,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
               {/* Search Bar */}
               <div style={{ position: 'relative', marginBottom: '1rem' }}>
                 <Search size={16} color="rgba(255,249,240,0.5)" style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)' }} />
-                <input 
+                <input
                   type="text"
                   placeholder="Filter perfumes..."
                   value={searchTerm}
@@ -675,7 +675,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
                 ) : (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                     {filteredList.map((item) => (
-                      <div 
+                      <div
                         key={item.id}
                         style={{
                           display: 'flex',
@@ -689,7 +689,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
                         }}
                       >
                         {/* Image Thumb */}
-                        <div 
+                        <div
                           style={{
                             width: '48px',
                             height: '48px',
@@ -699,9 +699,9 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
                             flexShrink: 0
                           }}
                         >
-                          <img 
-                            src={item.image} 
-                            alt={item.name} 
+                          <img
+                            src={item.image}
+                            alt={item.name}
                             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             onError={(e) => { e.target.style.display = 'none'; }}
                           />
