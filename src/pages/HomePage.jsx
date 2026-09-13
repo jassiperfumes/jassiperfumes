@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FRAGRANCES } from '../data/fragrances';
 import { Phone, MessageCircle, ArrowRight, Sparkles, Droplet, ShieldCheck, Heart, MapPin, Award, Compass, Star, CheckCircle2 } from 'lucide-react';
 
-export default function HomePage({ setCurrentPage, onSelectFragrance }) {
+export default function HomePage({ setCurrentPage, onSelectFragrance, fragrances }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const heroSlides = [
@@ -33,7 +33,8 @@ export default function HomePage({ setCurrentPage, onSelectFragrance }) {
     return () => clearInterval(interval);
   }, []);
 
-  const featuredFragrances = FRAGRANCES.filter((item) => item.isFeatured).slice(0, 4);
+  const allFragrances = fragrances || FRAGRANCES;
+  const featuredFragrances = allFragrances.filter((item) => item.isFeatured).slice(0, 4);
 
   return (
     <div className="animate-fade-in">

@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { FRAGRANCES, ATTAR_CATEGORIES } from '../data/fragrances';
 import { Search, Filter, Sparkles, MessageCircle, AlertCircle, Star, ShoppingCart } from 'lucide-react';
 
-export default function CataloguePage({ onSelectFragrance }) {
+export default function CataloguePage({ onSelectFragrance, fragrances }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('ALL');
+
+  const allFragrances = fragrances || FRAGRANCES;
 
   const categories = [
     'ALL',
@@ -12,7 +14,7 @@ export default function CataloguePage({ onSelectFragrance }) {
     'GIFT ITEMS'
   ];
 
-  const filteredFragrances = FRAGRANCES.filter((item) => {
+  const filteredFragrances = allFragrances.filter((item) => {
     // Category match
     let matchesCategory = true;
     if (activeCategory === 'FRAGRANCES') {
@@ -72,7 +74,7 @@ export default function CataloguePage({ onSelectFragrance }) {
             FRAGRANCE COLLECTION
           </h1>
           <p style={{ fontSize: '0.95rem', color: 'rgba(255, 249, 240, 0.85)', lineHeight: 1.6 }}>
-            Explore {FRAGRANCES.length} fragrance profiles available at Jassi Perfumes.
+            Explore {allFragrances.length} fragrance profiles available at Jassi Perfumes.
           </p>
         </div>
       </section>
@@ -135,7 +137,7 @@ export default function CataloguePage({ onSelectFragrance }) {
             </div>
 
             <div style={{ fontSize: '0.8rem', color: 'var(--text-espresso-muted)', fontStyle: 'italic' }}>
-              Showing {filteredFragrances.length} of {FRAGRANCES.length} fragrance profiles
+              Showing {filteredFragrances.length} of {allFragrances.length} fragrance profiles
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, MapPin } from 'lucide-react';
+import { Phone, MapPin, Lock } from 'lucide-react';
 
 export default function Footer({ setCurrentPage }) {
   return (
@@ -132,7 +132,33 @@ export default function Footer({ setCurrentPage }) {
             color: 'rgba(255, 249, 240, 0.5)'
           }}
         >
-          <div>&copy; 2026 Jassi Perfumes. All Rights Reserved.</div>
+          <div>
+            &copy; 2026 Jassi Perfumes. All Rights Reserved.
+            <span style={{ margin: '0 6px', opacity: 0.4 }}>•</span>
+            <button
+              onClick={() => {
+                setCurrentPage('admin');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: 'rgba(255, 249, 240, 0.45)',
+                fontSize: '0.725rem',
+                cursor: 'pointer',
+                padding: '0',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '4px',
+                transition: 'color 0.2s'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-gold)'}
+              onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 249, 240, 0.45)'}
+              title="Store Owner Admin Portal"
+            >
+              <Lock size={11} /> Owner Portal
+            </button>
+          </div>
           <div>* Scent names used solely for fragrance profile identification.</div>
         </div>
       </div>
