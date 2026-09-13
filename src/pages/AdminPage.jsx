@@ -256,7 +256,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
               maxLength={8}
               value={pinInput}
               onChange={(e) => setPinInput(e.target.value)}
-              placeholder="Enter PIN (e.g. 7860)"
+              placeholder="Enter PIN"
               autoFocus
               style={{
                 width: '100%',
