@@ -68,7 +68,7 @@ export default function FragranceModal({ fragrance, onClose }) {
             >
               <img
                 src={fragrance.image}
-                alt={fragrance.name}
+                alt={`${fragrance.name} - ${fragrance.notes || fragrance.description || 'Artisanal Perfume & Attar'} | Jassi Perfumes`}
                 style={{ width: '100%', maxHeight: '220px', objectFit: 'contain' }}
               />
             </div>

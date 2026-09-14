@@ -374,7 +374,8 @@ export default function HomePage({ setCurrentPage, onSelectFragrance, fragrances
                 >
                   <img
                     src={item.image}
-                    alt={item.name}
+                    alt={`${item.name} - ${item.notes || item.subtitle || 'Pure Attar & Inspired Fragrance'} | Jassi Perfumes Malad East Mumbai`}
+                    loading="lazy"
                     style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', transition: 'transform 0.4s ease' }}
                     className="cat-card-img"
                   />
