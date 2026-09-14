@@ -434,10 +434,10 @@ export const FRAGRANCES = [
   },
   {
     id: 43,
-    name: "AGARBATTI",
+    name: "5-COMPARTMENT PERFUME TRAVEL POUCH",
     category: "GIFT ITEMS",
     type: "GIFT SET",
-    subtitle: "5-COMPARTMENT TRAVEL POUCH",
+    subtitle: "5-COMPARTMENT LUXURY TRAVEL POUCH",
     notes: "Custom Travel Roll Case for Perfumes & Attar Vials",
     description: "A luxurious 5-compartment metallic magenta travel roll pouch designed to securely carry your favorite perfume bottles and attar vials on the go.",
     image: "/assets/perfumes/WhatsApp Image 2026-08-26 at 11.44.56 AM (1).jpeg",
@@ -476,3 +476,15 @@ export const ATTAR_CATEGORIES = [
     image: "/assets/attar_oriental.png"
   }
 ];
+
+export function slugify(text) {
+  if (!text) return '';
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, 'and')
+    .replace(/[\s\W-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+

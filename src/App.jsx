@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import StickyBottomBar from './components/StickyBottomBar';
-import FragranceModal from './components/FragranceModal';
 import HomePage from './pages/HomePage';
 import CataloguePage from './pages/CataloguePage';
 import AboutContactPage from './pages/AboutContactPage';
-import AdminPage from './pages/AdminPage';
-import { FRAGRANCES as INITIAL_FRAGRANCES } from './data/fragrances';
+import ProductPage from './pages/ProductPage';
+import { FRAGRANCES as INITIAL_FRAGRANCES, slugify } from './data/fragrances';
 import { getAllFragrances } from './services/fragranceService';
 
+// Code-split admin bundle to reduce initial JavaScript payload for visitors and Googlebot
+const AdminPage = lazy(() => import('./pages/AdminPage'));
+
 export default function App() {
-  const [currentPage, setCurrentPage] = useState(() => {
-    return window.location.hash === '#admin' ? 'admin' : 'home';
-  });
-  const [selectedFragrance, setSelectedFragrance] = useState(null);
+  const [currentPage, setCurrentPage] = useState('home');
+  const [currentProductSlug, setCurrentProductSlug] = useState(null);
   const [fragrances, setFragrances] = useState(INITIAL_FRAGRANCES);
 
   // Load latest fragrances from Firebase / cache
@@ -33,91 +33,86 @@ export default function App() {
     refreshFragrances();
   }, [refreshFragrances]);
 
-  // Handle URL hash changes (e.g. user visits #admin or #catalogue)
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (hash === 'admin') {
-        setCurrentPage('admin');
-      } else if (hash === 'catalogue') {
-        setCurrentPage('catalogue');
-      } else if (hash === 'about' || hash === 'contact') {
-        setCurrentPage('about-contact');
-      }
-    };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+  // Route parser for crawlable clean URLs (e.g. #/, #/catalogue, #/products/wisdom, #/contact, #/admin)
+  const parseRoute = useCallback(() => {
+    const rawHash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+    
+    if (rawHash === 'admin') {
+      setCurrentPage('admin');
+      setCurrentProductSlug(null);
+    } else if (rawHash === 'catalogue' || rawHash === 'catalog') {
+      setCurrentPage('catalogue');
+      setCurrentProductSlug(null);
+    } else if (rawHash === 'about' || rawHash === 'contact' || rawHash === 'about-contact' || rawHash === 'visit-store') {
+      setCurrentPage('about-contact');
+      setCurrentProductSlug(null);
+    } else if (rawHash.startsWith('products/')) {
+      const slug = rawHash.replace('products/', '');
+      setCurrentPage('product');
+      setCurrentProductSlug(slug);
+    } else {
+      setCurrentPage('home');
+      setCurrentProductSlug(null);
+    }
   }, []);
 
-  // Dynamic Blinking Browser Tab Title when user switches tabs
+  // Handle URL hash changes
   useEffect(() => {
-    const SITE_TITLE = "Jassi Perfumes | Premium Attar & Inspired Fragrances in Malad East";
-    let delayTimer = null;
-    let blinkInterval = null;
+    parseRoute();
+    window.addEventListener('hashchange', parseRoute);
+    return () => window.removeEventListener('hashchange', parseRoute);
+  }, [parseRoute]);
 
-    const stopBlinkingAndRestore = () => {
-      if (delayTimer) {
-        clearTimeout(delayTimer);
-        delayTimer = null;
-      }
-      if (blinkInterval) {
-        clearInterval(blinkInterval);
-        blinkInterval = null;
-      }
+  // Stable, descriptive title management
+  useEffect(() => {
+    const SITE_TITLE = "Jassi Perfumes | Premium Attar & Inspired Fragrances in Malad East, Mumbai";
+    if (currentPage === 'home') {
       document.title = SITE_TITLE;
-    };
+    } else if (currentPage === 'catalogue') {
+      document.title = "Fragrance Catalogue & Collection | Jassi Perfumes Malad East Mumbai";
+    } else if (currentPage === 'about-contact') {
+      document.title = "Visit Our Store & Contact | Jassi Perfumes Rani Sati Marg Malad East";
+    } else if (currentPage === 'admin') {
+      document.title = "Store Admin Dashboard | Jassi Perfumes";
+    }
+  }, [currentPage]);
 
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        // Wait 2 seconds before starting the blinking effect
-        delayTimer = setTimeout(() => {
-          let toggle = false;
-          document.title = "👉 Come here";
-
-          // Blink title every 0.5 seconds (500ms) alternating between "Jassi Perfumes" and "👉 Come here"
-          blinkInterval = setInterval(() => {
-            document.title = toggle ? "👉 Come here" : "Jassi Perfumes";
-            toggle = !toggle;
-          }, 500);
-        }, 2000);
-      } else {
-        // Customer returned to tab - immediately restore website title
-        stopBlinkingAndRestore();
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('focus', stopBlinkingAndRestore);
-
-    // Initial check on mount
-    document.title = SITE_TITLE;
-
-    return () => {
-      stopBlinkingAndRestore();
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('focus', stopBlinkingAndRestore);
-    };
-  }, []);
+  // Find selected fragrance when on product route
+  const currentFragrance = currentProductSlug
+    ? fragrances.find(f => slugify(f.name) === currentProductSlug || String(f.id) === currentProductSlug)
+    : null;
 
   const handleSelectFragrance = (fragrance) => {
-    setSelectedFragrance(fragrance);
+    if (!fragrance) return;
+    const slug = slugify(fragrance.name);
+    window.location.hash = `#/products/${slug}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleCloseModal = () => {
-    setSelectedFragrance(null);
+  const navigateTo = (pageName) => {
+    if (pageName === 'home') {
+      window.location.hash = '#/';
+    } else if (pageName === 'catalogue') {
+      window.location.hash = '#/catalogue';
+    } else if (pageName === 'contact' || pageName === 'about' || pageName === 'about-contact') {
+      window.location.hash = '#/contact';
+    } else if (pageName === 'admin') {
+      window.location.hash = '#/admin';
+    }
+    setCurrentPage(pageName);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       {/* Global Header */}
-      <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Header currentPage={currentPage} setCurrentPage={navigateTo} />
 
-      {/* Main Page Content */}
+      {/* Main Page Content with Crawlable Routes */}
       <main style={{ flexGrow: 1 }}>
         {currentPage === 'home' && (
           <HomePage
-            setCurrentPage={setCurrentPage}
+            setCurrentPage={navigateTo}
             onSelectFragrance={handleSelectFragrance}
             fragrances={fragrances}
           />
@@ -130,29 +125,38 @@ export default function App() {
           />
         )}
 
-        {(currentPage === 'about' || currentPage === 'contact' || currentPage === 'about-contact') && (
+        {currentPage === 'product' && (
+          <ProductPage
+            fragrance={currentFragrance}
+            allFragrances={fragrances}
+            setCurrentPage={navigateTo}
+            onSelectFragrance={handleSelectFragrance}
+          />
+        )}
+
+        {currentPage === 'about-contact' && (
           <AboutContactPage currentPage={currentPage} />
         )}
 
         {currentPage === 'admin' && (
-          <AdminPage
-            setCurrentPage={setCurrentPage}
-            onFragrancesUpdated={refreshFragrances}
-          />
+          <Suspense fallback={
+            <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#1A1412', color: '#D4AF37' }}>
+              <div>Loading Admin Portal...</div>
+            </div>
+          }>
+            <AdminPage
+              setCurrentPage={navigateTo}
+              onFragrancesUpdated={refreshFragrances}
+            />
+          </Suspense>
         )}
       </main>
 
       {/* Global Footer */}
-      <Footer setCurrentPage={setCurrentPage} />
+      <Footer setCurrentPage={navigateTo} />
 
       {/* Sticky Mobile Action Bar */}
       <StickyBottomBar />
-
-      {/* Fragrance Detail Modal */}
-      <FragranceModal
-        fragrance={selectedFragrance}
-        onClose={handleCloseModal}
-      />
     </div>
   );
 }

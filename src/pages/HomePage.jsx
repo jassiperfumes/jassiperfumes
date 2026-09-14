@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FRAGRANCES } from '../data/fragrances';
+import { FRAGRANCES, slugify } from '../data/fragrances';
 import { Phone, MessageCircle, ArrowRight, Sparkles, Droplet, ShieldCheck, Heart, MapPin, Award, Compass, Star, CheckCircle2 } from 'lucide-react';
 
 export default function HomePage({ setCurrentPage, onSelectFragrance, fragrances }) {
@@ -346,8 +346,14 @@ export default function HomePage({ setCurrentPage, onSelectFragrance, fragrances
           {/* 4 Featured Fragrance Grid */}
           <div className="curated-grid">
             {featuredFragrances.map((item) => (
-              <div
+              <a
                 key={item.id}
+                href={`#/products/${slugify(item.name)}`}
+                onClick={(e) => {
+                  if (e.metaKey || e.ctrlKey) return; // Allow opening in new tab
+                  e.preventDefault();
+                  if (onSelectFragrance) onSelectFragrance(item);
+                }}
                 style={{
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #ECE5DB',
@@ -356,7 +362,9 @@ export default function HomePage({ setCurrentPage, onSelectFragrance, fragrances
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   display: 'flex',
                   flexDirection: 'column',
-                  boxShadow: '0 4px 16px rgba(43, 33, 27, 0.06)'
+                  boxShadow: '0 4px 16px rgba(43, 33, 27, 0.06)',
+                  textDecoration: 'none',
+                  color: 'inherit'
                 }}
                 className="catalogue-card"
               >
@@ -384,7 +392,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance, fragrances
                 {/* Card Content Body */}
                 <div style={{ padding: '1.15rem', display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'space-between' }}>
                   <div>
-                    {/* Title & Star Rating Row */}
+                    {/* Title & Authentic Tag Row */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.5rem', marginBottom: '0.35rem' }}>
                       <h3
                         style={{
@@ -398,12 +406,21 @@ export default function HomePage({ setCurrentPage, onSelectFragrance, fragrances
                       >
                         {item.name}
                       </h3>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', flexShrink: 0, marginTop: '2px' }}>
-                        <Star size={15} color="#EAB308" fill="#EAB308" />
-                        <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-espresso)' }}>
-                          4.9
-                        </span>
-                      </div>
+                      <span 
+                        style={{ 
+                          fontSize: '0.65rem', 
+                          fontWeight: 700, 
+                          color: 'var(--accent-gold)', 
+                          backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                          border: '1px solid rgba(212, 175, 55, 0.3)',
+                          padding: '2px 6px',
+                          borderRadius: '4px',
+                          whiteSpace: 'nowrap',
+                          flexShrink: 0
+                        }}
+                      >
+                        {item.category === 'GIFT ITEMS' ? 'GIFT SET' : (item.type === 'CONCENTRATED ATTAR' ? 'ATTAR' : 'INSPIRED')}
+                      </span>
                     </div>
 
                     {/* Subtitle text */}
@@ -445,7 +462,7 @@ export default function HomePage({ setCurrentPage, onSelectFragrance, fragrances
                     <span>Order on WhatsApp</span>
                   </button>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
 
