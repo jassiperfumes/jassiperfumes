@@ -13,13 +13,16 @@ import {
   Eye,
   LogOut,
   RefreshCw,
-  Search
+  Search,
+  RotateCcw
 } from 'lucide-react';
 import {
   getAllFragrances,
   uploadPerfumeImage,
   addFragrance,
-  deleteFragrance
+  deleteFragrance,
+  restoreAllDefaultFragrances,
+  getDeletedFragranceCount
 } from '../services/fragranceService';
 
 // Supported PINs for the store owner (easy to remember)
@@ -47,6 +50,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
   const [fragrancesList, setFragrancesList] = useState([]);
   const [isLoadingList, setIsLoadingList] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [deletedCount, setDeletedCount] = useState(0);
   const fileInputRef = useRef(null);
 
   // Load product list on auth
@@ -61,6 +65,7 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
     try {
       const items = await getAllFragrances();
       setFragrancesList(items);
+      setDeletedCount(getDeletedFragranceCount());
     } catch (err) {
       console.error(err);
     } finally {
@@ -166,24 +171,35 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
     }
   };
 
-  // Delete product
+  // Delete product (both custom and default catalog items)
   const handleDelete = async (item) => {
-    if (!item.isCustom) {
-      alert("This is a core template perfume and cannot be deleted directly from here.");
-      return;
-    }
-
-    const confirmDelete = window.confirm(`Are you sure you want to delete "${item.name}"?`);
+    const confirmDelete = window.confirm(`Are you sure you want to delete "${item.name}" from the store catalogue?`);
     if (!confirmDelete) return;
 
     try {
       await deleteFragrance(item.id);
-      setStatusMessage({ type: 'success', text: `"${item.name}" was deleted.` });
+      setStatusMessage({ type: 'success', text: `"${item.name}" was removed from the store.` });
       await loadFragrances();
       if (onFragrancesUpdated) onFragrancesUpdated();
     } catch (error) {
       console.error("Delete error:", error);
       setStatusMessage({ type: 'error', text: 'Could not delete product.' });
+    }
+  };
+
+  // Restore all default fragrances
+  const handleRestoreDefaults = async () => {
+    const confirmRestore = window.confirm("Do you want to restore all previously deleted default store perfumes?");
+    if (!confirmRestore) return;
+
+    try {
+      await restoreAllDefaultFragrances();
+      setStatusMessage({ type: 'success', text: 'All default perfumes have been restored.' });
+      await loadFragrances();
+      if (onFragrancesUpdated) onFragrancesUpdated();
+    } catch (error) {
+      console.error("Restore error:", error);
+      setStatusMessage({ type: 'error', text: 'Could not restore default perfumes.' });
     }
   };
 
@@ -618,26 +634,49 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
                     Store Fragrances ({fragrancesList.length})
                   </h3>
                   <span style={{ fontSize: '0.75rem', color: 'rgba(255, 249, 240, 0.6)' }}>
-                    Items added via this portal can be deleted anytime
+                    Manage and delete any perfume anytime
                   </span>
                 </div>
-                <button
-                  onClick={loadFragrances}
-                  style={{
-                    background: 'none',
-                    border: '1px solid rgba(255, 249, 240, 0.2)',
-                    color: '#FFF9F0',
-                    padding: '4px 10px',
-                    borderRadius: '4px',
-                    fontSize: '0.75rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '4px'
-                  }}
-                >
-                  <RefreshCw size={12} /> Refresh
-                </button>
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  {deletedCount > 0 && (
+                    <button
+                      onClick={handleRestoreDefaults}
+                      title="Restore deleted default perfumes"
+                      style={{
+                        background: 'rgba(212, 175, 55, 0.15)',
+                        border: '1px solid rgba(212, 175, 55, 0.4)',
+                        color: '#D4AF37',
+                        padding: '4px 10px',
+                        borderRadius: '4px',
+                        fontSize: '0.75rem',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <RotateCcw size={12} /> Restore Defaults ({deletedCount})
+                    </button>
+                  )}
+                  <button
+                    onClick={loadFragrances}
+                    style={{
+                      background: 'none',
+                      border: '1px solid rgba(255, 249, 240, 0.2)',
+                      color: '#FFF9F0',
+                      padding: '4px 10px',
+                      borderRadius: '4px',
+                      fontSize: '0.75rem',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px'
+                    }}
+                  >
+                    <RefreshCw size={12} /> Refresh
+                  </button>
+                </div>
               </div>
 
               {/* Search Bar */}
@@ -728,25 +767,31 @@ export default function AdminPage({ setCurrentPage, onFragrancesUpdated }) {
                         </div>
 
                         {/* Actions */}
-                        {item.isCustom && (
-                          <button
-                            onClick={() => handleDelete(item)}
-                            title="Delete this perfume"
-                            style={{
-                              backgroundColor: 'rgba(239, 68, 68, 0.15)',
-                              border: '1px solid rgba(239, 68, 68, 0.3)',
-                              color: '#F87171',
-                              padding: '6px',
-                              borderRadius: '6px',
-                              cursor: 'pointer',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center'
-                            }}
-                          >
-                            <Trash2 size={16} />
-                          </button>
-                        )}
+                        <button
+                          onClick={() => handleDelete(item)}
+                          title={`Delete ${item.name}`}
+                          style={{
+                            backgroundColor: 'rgba(239, 68, 68, 0.15)',
+                            border: '1px solid rgba(239, 68, 68, 0.3)',
+                            color: '#F87171',
+                            padding: '6px',
+                            borderRadius: '6px',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0,
+                            transition: 'all 0.2s ease'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 0.3)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 0.15)';
+                          }}
+                        >
+                          <Trash2 size={16} />
+                        </button>
                       </div>
                     ))}
                   </div>

@@ -5,6 +5,7 @@ import {
   addDoc, 
   deleteDoc, 
   doc, 
+  setDoc,
   serverTimestamp,
   query,
   orderBy
@@ -17,7 +18,9 @@ import {
 import { FRAGRANCES as INITIAL_FRAGRANCES } from '../data/fragrances';
 
 const COLLECTION_NAME = 'perfumes';
+const DELETED_COLLECTION_NAME = 'deleted_perfumes';
 const LOCAL_STORAGE_CUSTOM_KEY = 'jassi_custom_perfumes';
+const LOCAL_STORAGE_DELETED_KEY = 'jassi_deleted_perfumes';
 
 // Helper: Compress/Resize image to lightweight Base64 Data URL as fallback
 function fileToBase64(file) {
@@ -73,12 +76,30 @@ function saveLocalCustomPerfumes(items) {
   }
 }
 
+function getLocalDeletedIds() {
+  try {
+    const raw = localStorage.getItem(LOCAL_STORAGE_DELETED_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveLocalDeletedIds(ids) {
+  try {
+    localStorage.setItem(LOCAL_STORAGE_DELETED_KEY, JSON.stringify(ids));
+  } catch (e) {
+    console.warn("Could not save deleted ids to localStorage", e);
+  }
+}
+
 /**
- * Fetch all fragrances (combining base dataset, Firestore, and local items)
+ * Fetch all fragrances (combining base dataset, Firestore, and local items, minus deleted items)
  */
 export async function getAllFragrances() {
   const localItems = getLocalCustomPerfumes();
   let firestoreItems = [];
+  const deletedSet = new Set(getLocalDeletedIds().map(String));
 
   try {
     const perfumesRef = collection(db, COLLECTION_NAME);
@@ -98,6 +119,18 @@ export async function getAllFragrances() {
     console.warn("Firestore offline or not yet initialized in console; using local storage fallback.");
   }
 
+  // Also sync deleted fragrance IDs from Firestore
+  try {
+    const deletedRef = collection(db, DELETED_COLLECTION_NAME);
+    const deletedSnap = await getDocs(deletedRef);
+    deletedSnap.forEach((docSnap) => {
+      deletedSet.add(String(docSnap.id));
+    });
+    saveLocalDeletedIds(Array.from(deletedSet));
+  } catch (error) {
+    // Firestore offline or not initialized, deletedSet already holds local deleted items
+  }
+
   // Deduplicate by ID
   const dynamicMap = new Map();
   // Add local items first
@@ -108,7 +141,10 @@ export async function getAllFragrances() {
   const dynamicList = Array.from(dynamicMap.values());
 
   // Dynamic custom added items appear at top, followed by initial 44 base perfumes
-  return [...dynamicList, ...INITIAL_FRAGRANCES];
+  const combined = [...dynamicList, ...INITIAL_FRAGRANCES];
+
+  // Filter out any perfume that has been deleted
+  return combined.filter(item => !deletedSet.has(String(item.id)));
 }
 
 /**
@@ -178,23 +214,86 @@ export async function addFragrance(perfumeData) {
 }
 
 /**
- * Delete a custom perfume
+ * Delete any perfume (both custom and default catalog items)
  */
 export async function deleteFragrance(id) {
-  if (!id) return;
+  if (!id && id !== 0) return;
+  const idStr = String(id);
 
-  // Remove from local storage
+  // 1. Add to local deleted IDs list
+  const currentDeleted = getLocalDeletedIds().map(String);
+  if (!currentDeleted.includes(idStr)) {
+    const updatedDeleted = [...currentDeleted, idStr];
+    saveLocalDeletedIds(updatedDeleted);
+  }
+
+  // 2. Remove from local custom perfumes if present
   const currentLocals = getLocalCustomPerfumes();
-  const updated = currentLocals.filter(item => item.id !== id);
-  saveLocalCustomPerfumes(updated);
+  const updatedLocals = currentLocals.filter(item => String(item.id) !== idStr);
+  saveLocalCustomPerfumes(updatedLocals);
 
-  // Try removing from Firestore if it's a firestore id
-  if (!id.startsWith('local_')) {
+  // 3. If it's a firestore id in 'perfumes', delete doc from Firestore
+  if (!idStr.startsWith('local_') && isNaN(Number(idStr))) {
     try {
-      const docRef = doc(db, COLLECTION_NAME, id);
+      const docRef = doc(db, COLLECTION_NAME, idStr);
       await deleteDoc(docRef);
     } catch (e) {
-      console.warn("Could not delete from Firestore:", e.message);
+      console.warn("Could not delete from Firestore perfumes collection:", e.message);
     }
   }
+
+  // 4. Mark as deleted in Firestore deleted_perfumes collection
+  try {
+    const deletedDocRef = doc(db, DELETED_COLLECTION_NAME, idStr);
+    await setDoc(deletedDocRef, {
+      id: idStr,
+      deletedAt: serverTimestamp()
+    });
+  } catch (e) {
+    console.warn("Could not record deleted fragrance in Firestore:", e.message);
+  }
 }
+
+/**
+ * Restore a single fragrance by ID
+ */
+export async function restoreFragrance(id) {
+  if (!id && id !== 0) return;
+  const idStr = String(id);
+
+  // Remove from local storage deleted list
+  const currentDeleted = getLocalDeletedIds().map(String);
+  saveLocalDeletedIds(currentDeleted.filter(d => d !== idStr));
+
+  // Remove from Firestore deleted_perfumes
+  try {
+    const deletedDocRef = doc(db, DELETED_COLLECTION_NAME, idStr);
+    await deleteDoc(deletedDocRef);
+  } catch (e) {
+    console.warn("Could not remove from Firestore deleted_perfumes:", e.message);
+  }
+}
+
+/**
+ * Restore all default fragrances
+ */
+export async function restoreAllDefaultFragrances() {
+  saveLocalDeletedIds([]);
+
+  try {
+    const deletedRef = collection(db, DELETED_COLLECTION_NAME);
+    const snap = await getDocs(deletedRef);
+    const promises = snap.docs.map((docSnap) => deleteDoc(docSnap.ref));
+    await Promise.all(promises);
+  } catch (e) {
+    console.warn("Could not clear deleted perfumes in Firestore:", e.message);
+  }
+}
+
+/**
+ * Get count of currently deleted fragrances
+ */
+export function getDeletedFragranceCount() {
+  return getLocalDeletedIds().length;
+}
+
